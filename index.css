@@ -12,12 +12,19 @@ html, body{
     margin-top: 0;
     padding: 0;
     background-color: var(--beige);
-    color: balak;
-    width: auto;
+    color: black;
     min-height: 100vh;
+    user-select: none;
 }
+
+#side-menu-button{
+    background-color: var(--beige); 
+    border: none;
+}
+
 #title{
     color: var(--dark-green);
+    cursor: default;
 }
 main{
     flex-grow: 1;
@@ -28,30 +35,71 @@ main{
     flex-direction: column;
     align-items: center;
 }
-#category{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0.5rem;  
+#filter-setting{
+    width: 40rem;
 }
-#distance{
+.filter-setting-title{
     display: flex;
     flex-direction: column;
     align-items: center; 
+    font-size: 1.3rem;
     margin: 0.5rem;
 }
+.filter-setting-title:active{
+    text-decoration: underline;
+}
+.filter-setting-option{
+    display: grid;
+    margin-left: 4.5rem;
+    grid-template-columns: repeat(3, 33%);
+}
+.filter-setting-option label{
+    margin: 0.25rem 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+details{
+    user-select: none;
+    overflow: hidden;
+    transition: height 400ms ease-out;
+}
+details:not([open]){
+    height: 2.5rem;
+}
+details[open]#style-details{
+    height: 12rem;
+}
+details[open]#category-details{
+    height: 21rem;
+}
+details[open]#distance-details{
+    height: 7rem;
+}
+
 #blacklist{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0.5rem;
 }
+#blacklist:active{
+    text-decoration: underline;
+}
+
 #whitelist{
     display: flex;
     flex-direction: column;
     align-items: center; 
-    margin: 1rem;
+    margin: 0.5rem;
 }
+#whitelist:active{
+    text-decoration: underline;
+}
+
 #button-content{
     display: flex;
     flex-direction: column;
@@ -62,7 +110,12 @@ main{
     border: none;
     color: white;
     padding: 15px 32px;
+    margin: 1rem;
 }
+#random:active {
+    background-color: var(--dark-green);
+}
+
 footer{
     display: flex;
     flex-direction: column;
@@ -70,4 +123,8 @@ footer{
     background-color: var(--dark-green);
     padding: 0.1rem;
     color: var(--white);
+}
+
+.filter-setting-modal::backdrop{
+    /* background-color: rgba(0, 0, 0, 0.3); */
 }
