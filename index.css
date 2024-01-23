@@ -3,6 +3,7 @@
     --dark-green: #557653;
     --light-green: #7b9f6a;
     --white: #FFFFFF;
+    --dialog-background: rgba(0, 0, 0, 0.3);
 }
 
 html, body{
@@ -126,5 +127,70 @@ footer{
 }
 
 .filter-setting-modal::backdrop{
-    /* background-color: rgba(0, 0, 0, 0.3); */
+    background-color: rgba(0, 0, 0, 0.3);
+    animation: fade-in 0.3s ease-out;
+}
+.filter-setting-modal.hide::backdrop{
+    animation: fade-out 0.5s ease-out;
+}
+.filter-setting-modal{
+    width: 50vw;
+    height: 50vh;
+    position: fixed;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    max-width: none;
+    border-color: var(--dark-green);
+}
+
+.filter-setting-modal[open] {
+    animation: slide-up 0.4s ease-out;
+}
+.filter-setting-modal.hide{
+    animation: slide-down 0.5s ease-out;
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+  
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+  
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+  
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+  
+    100% {
+        opacity: 0;
+    }
 }

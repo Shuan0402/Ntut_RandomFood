@@ -22,64 +22,104 @@
             <h1 id="title">NTUT Random Food</h1>
             <div>
                 <div id="filter-setting">
-                    <details id="style-details">
-                        <summary class="filter-setting-title">Style 風格</summary>
-                        <ul class="filter-setting-option">
-                            <label onclick="styleCheckAll()"><input type="checkbox" name="style-checkbox">All 全選</label>
-                            <label><input type="checkbox" name="style-checkbox">Chinese 中式</label>
-                            <label><input type="checkbox" name="style-checkbox">Taiwanese 台式</label>
-                            <label><input type="checkbox" name="style-checkbox">Hong Kong 港式</label>
-                            <label><input type="checkbox" name="style-checkbox">Sichuan 川式</label>
-                            <label><input type="checkbox" name="style-checkbox">Korean 韓式</label>
-                            <label><input type="checkbox" name="style-checkbox">Japanese 日式</label>
-                            <label><input type="checkbox" name="style-checkbox">Western 西式</label>
-                            <label><input type="checkbox" name="style-checkbox">American 美式</label>
-                            <label><input type="checkbox" name="style-checkbox">India 印度</label>
-                            <label><input type="checkbox" name="style-checkbox">Southeast Asia 東南亞</label>
-                            <label><input type="checkbox" name="style-checkbox">Others 其他</label>
-                        </ul>
-                    </details>
-                    <details id="category-details">
-                        <summary class="filter-setting-title">Category 分類</summary>
-                        <ul class="filter-setting-option">
-                            <label onclick="categoryCheckAll()"><input type="checkbox" name="category-checkbox">All 全選</label>
-                            <label><input type="checkbox" name="category-checkbox">Rice 飯</label>
-                            <label><input type="checkbox" name="category-checkbox">Noodle 麵食</label>
-                            <label><input type="checkbox" name="category-checkbox">Vegetarian diet 素食</label>
-                            <label><input type="checkbox" name="category-checkbox">Fast food 速食</label>
-                            <label><input type="checkbox" name="category-checkbox">Bread, Dessert<br>&emsp;&thinsp;麵包、甜點</label>
-                            <label><input type="checkbox" name="category-checkbox">BBQ 燒烤</label>
-                            <label><input type="checkbox" name="category-checkbox">Self-serve 自助餐</label>
-                            <label><input type="checkbox" name="category-checkbox">Street food 小吃</label>
-                            <label><input type="checkbox" name="category-checkbox">Stir-fried 熱炒</label>
-                            <label><input type="checkbox" name="category-checkbox">Brunch 早午餐</label>
-                            <label><input type="checkbox" name="category-checkbox">Cafes 咖啡廳</label>
-                            <label><input type="checkbox" name="category-checkbox">Drink 飲料</label>
-                            <label><input type="checkbox" name="category-checkbox">Bar 酒吧</label>
-                            <label><input type="checkbox" name="category-checkbox">Hot pot 火鍋</label>
-                            <label><input type="checkbox" name="category-checkbox">Light meal 簡餐</label>
-                            <label><input type="checkbox" name="category-checkbox">Braised dishes 滷味</label>
-                            <label><input type="checkbox" name="category-checkbox">Fried food 炸物</label>
-                            <label><input type="checkbox" name="category-checkbox">Izakaya 居酒屋</label>
-                            <label><input type="checkbox" name="category-checkbox">Bistro 餐酒館</label>
-                            <label><input type="checkbox" name="category-checkbox">Teppanyaki 鐵板燒</label>
-                            <label><input type="checkbox" name="category-checkbox">Convenient store<br>&emsp;&thinsp;便利商店</label>
-                            <label><input type="checkbox" name="category-checkbox">Others 其他</label>
-                        </ul>
-                    </details>
-                    <details id="distance-details">
-                        <summary class="filter-setting-title">Distance 距離</summary>
-                        <ul class="filter-setting-option">
-                            <label><input type="checkbox">Intramural 校內</label>
-                            <label><input type="checkbox">Dormitory, Guanghua<br>&emsp;&thinsp;宿舍、光華</label>
-                            <label><input type="checkbox">Farther 更遠</label>
-                        </ul>
-                    </details>
-                    <label class="filter-setting-title" onclick="clickBlacklist()">Blacklist 黑名單</label>
-                    <dialog class="filter-setting-modal" id="blacklist-modal">
-                        <p>test</p>
-                    </dialog>
-                    <label class="filter-setting-title">Preference list 偏好名單</label>
+                    <div id="style">
+                        <details id="style-details">
+                            <summary class="filter-setting-title">Style 風格</summary>
+                            <ul class="filter-setting-option">
+                                <label onclick="styleCheckAll()"><input type="checkbox" name="style-checkbox">All 全選</label>
+                                <label><input type="checkbox" name="style-checkbox">Chinese 中式</label>
+                                <label><input type="checkbox" name="style-checkbox">Taiwanese 台式</label>
+                                <label><input type="checkbox" name="style-checkbox">Hong Kong 港式</label>
+                                <label><input type="checkbox" name="style-checkbox">Sichuan 川式</label>
+                                <label><input type="checkbox" name="style-checkbox">Korean 韓式</label>
+                                <label><input type="checkbox" name="style-checkbox">Japanese 日式</label>
+                                <label><input type="checkbox" name="style-checkbox">Western 西式</label>
+                                <label><input type="checkbox" name="style-checkbox">American 美式</label>
+                                <label><input type="checkbox" name="style-checkbox">India 印度</label>
+                                <label><input type="checkbox" name="style-checkbox">Southeast Asia 東南亞</label>
+                                <label><input type="checkbox" name="style-checkbox">Others 其他</label>
+                            </ul>
+                        </details>
+                    </div>
+                    <div id = category>
+                        <details id="category-details">
+                            <summary class="filter-setting-title">Category 分類</summary>
+                            <ul class="filter-setting-option">
+                                <label onclick="categoryCheckAll()"><input type="checkbox" name="category-checkbox">All 全選</label>
+                                <label><input type="checkbox" name="category-checkbox">Rice 飯</label>
+                                <label><input type="checkbox" name="category-checkbox">Noodle 麵食</label>
+                                <label><input type="checkbox" name="category-checkbox">Vegetarian diet 素食</label>
+                                <label><input type="checkbox" name="category-checkbox">Fast food 速食</label>
+                                <label><input type="checkbox" name="category-checkbox">Bread, Dessert<br>&emsp;&thinsp;麵包、甜點</label>
+                                <label><input type="checkbox" name="category-checkbox">BBQ 燒烤</label>
+                                <label><input type="checkbox" name="category-checkbox">Self-serve 自助餐</label>
+                                <label><input type="checkbox" name="category-checkbox">Street food 小吃</label>
+                                <label><input type="checkbox" name="category-checkbox">Stir-fried 熱炒</label>
+                                <label><input type="checkbox" name="category-checkbox">Brunch 早午餐</label>
+                                <label><input type="checkbox" name="category-checkbox">Cafes 咖啡廳</label>
+                                <label><input type="checkbox" name="category-checkbox">Drink 飲料</label>
+                                <label><input type="checkbox" name="category-checkbox">Bar 酒吧</label>
+                                <label><input type="checkbox" name="category-checkbox">Hot pot 火鍋</label>
+                                <label><input type="checkbox" name="category-checkbox">Light meal 簡餐</label>
+                                <label><input type="checkbox" name="category-checkbox">Braised dishes 滷味</label>
+                                <label><input type="checkbox" name="category-checkbox">Fried food 炸物</label>
+                                <label><input type="checkbox" name="category-checkbox">Izakaya 居酒屋</label>
+                                <label><input type="checkbox" name="category-checkbox">Bistro 餐酒館</label>
+                                <label><input type="checkbox" name="category-checkbox">Teppanyaki 鐵板燒</label>
+                                <label><input type="checkbox" name="category-checkbox">Convenient store<br>&emsp;&thinsp;便利商店</label>
+                                <label><input type="checkbox" name="category-checkbox">Others 其他</label>
+                            </ul>
+                        </details>
+                    </div>
+                    <div id="distaance">
+                        <details id="distance-details">
+                            <summary class="filter-setting-title">Distance 距離</summary>
+                            <ul class="filter-setting-option">
+                                <label><input type="checkbox">Intramural 校內</label>
+                                <label><input type="checkbox">Dormitory, Guanghua<br>&emsp;&thinsp;宿舍、光華</label>
+                                <label><input type="checkbox">Farther 更遠</label>
+                            </ul>
+                        </details>
+                    </div>
+                    <div id="blacklist">
+                        <label class="filter-setting-title" onclick="clickBlacklist()">Blacklist 黑名單</label>
+                        <dialog class="filter-setting-modal" id="blacklist-modal">
+                            <div>
+                                <label>Blacklist 黑名單</label>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                                    <circle cx="10" cy="10" r="8" stroke="#557653" stroke-width="2" fill="transparent"/> 
+                                    <text x="5.5" y="15" font-family="Arial" font-size="16" fill="#557653">?</text>
+                                </svg>   
+                            </div>
+                            <div>
+                                <label><input type="text"></label>
+                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="8" cy="8" r="6" stroke="#557653" stroke-width="2" fill="transparent"/> 
+                                    <line x1="12" y1="12" x2="20" y2="20" stroke="#557653" stroke-width="2">
+                                </svg>
+                            </div>
+                        </dialog>
+                    </div>
+                    <div>
+                        <label class="filter-setting-title" onclick="clickBlacklist()">Preference list 偏好名單</label>
+                        <dialog class="filter-setting-modal">
+                            <div>
+                                <label>Blacklist 黑名單</label>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                                    <circle cx="10" cy="10" r="8" stroke="#557653" stroke-width="2" fill="transparent"/> 
+                                    <text x="5.5" y="15" font-family="Arial" font-size="16" fill="#557653">?</text>
+                                </svg>   
+                            </div>
+                            <div>
+                                <label><input type="text"></label>
+                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="8" cy="8" r="6" stroke="#557653" stroke-width="2" fill="transparent"/> 
+                                    <line x1="12" y1="12" x2="20" y2="20" stroke="#557653" stroke-width="2">
+                                </svg>
+                            </div>
+                        </dialog>
+                    </div>
+                    
                 </div>
                 <div id="button-content">
                     <button id="random">RANDOM</button>
