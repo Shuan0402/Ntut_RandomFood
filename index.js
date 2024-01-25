@@ -26,13 +26,8 @@ function categoryCheckAll() {
     }
 }
 
-function clickBlacklist(){
-    let modal=document.getElementById("blacklist-modal");
-    modal.showModal();
-}
-
-function clickWhitelist(){
-    let modal=document.getElementById("whitelist-modal");
+function clickDialog(dialog_id){
+    let modal=document.getElementById(dialog_id);
     modal.showModal();
 }
 
@@ -59,7 +54,7 @@ function dialogClose(){
 
 dialogClose();
 
-function deleteShop(button) {
-    let divToDelete = button.closest('.list-option');
+function deleteShop(shop_id) {
+    let divToDelete = getElementById(shop_id);
     divToDelete.remove();
 }

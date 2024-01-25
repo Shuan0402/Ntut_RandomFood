@@ -48,6 +48,7 @@ main{
     align-items: center; 
     font-size: 1.3rem;
     margin: 0.35rem;
+    font-weight: bold;
 }
 .filter-setting-title:active{
     text-decoration: underline;
@@ -213,7 +214,9 @@ footer{
         opacity: 0;
     }
 }
-
+.list-option{
+    color: var(--dark-green);
+}
 .list-option-button{
     margin: 0%;
     padding: 0%;
@@ -226,11 +229,9 @@ footer{
     width: 10;
     height: 10;
 }
-.list-option-button svg{
-    
-}
 .dialog-title{
     font-size: larger;
+    font-weight: bold;
     color:var(--dark-green);
 }
 .dialog-content{
@@ -272,4 +273,22 @@ footer{
 #searching-button{
     align-items: last baseline;
     margin-right: 0.4rem;
+}
+
+.filter-setting-modal.explain-modal{
+    width: 10rem;
+    height: 13rem;
+    outline: none;
+}
+
+.explain-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--dark-green);
+}
+
+.title{
+    font-weight: bold;
 }
