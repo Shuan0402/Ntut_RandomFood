@@ -1,5 +1,6 @@
 :root{
     --beige: #F4F1EB;
+    --dark-beige: #d6c198;
     --dark-green: #557653;
     --light-green: #7b9f6a;
     --white: #FFFFFF;
@@ -16,6 +17,7 @@ html, body{
     color: black;
     min-height: 100vh;
     user-select: none;
+    caret-color: transparent;
 }
 
 #side-menu-button{
@@ -26,6 +28,7 @@ html, body{
 #title{
     color: var(--dark-green);
     cursor: default;
+
 }
 main{
     flex-grow: 1;
@@ -44,7 +47,7 @@ main{
     flex-direction: column;
     align-items: center; 
     font-size: 1.3rem;
-    margin: 0.5rem;
+    margin: 0.35rem;
 }
 .filter-setting-title:active{
     text-decoration: underline;
@@ -61,7 +64,9 @@ ul {
     list-style: none;
     padding: 0;
     display: flex;
-    justify-content: center;
+    
+    /* flex-direction: column; */
+    /* justify-content: center; */
 }
 details{
     user-select: none;
@@ -85,7 +90,7 @@ details[open]#distance-details{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.5rem;
+    margin: 0rem;
 }
 #blacklist:active{
     text-decoration: underline;
@@ -95,7 +100,7 @@ details[open]#distance-details{
     display: flex;
     flex-direction: column;
     align-items: center; 
-    margin: 0.5rem;
+    margin: 0rem;
 }
 #whitelist:active{
     text-decoration: underline;
@@ -106,14 +111,21 @@ details[open]#distance-details{
     flex-direction: column;
     align-items: center;
 }
-#random{
+#random-button{
+    width: 8rem;
+    height: 4rem;
     background-color: var(--light-green); 
     border: none;
     color: white;
-    padding: 15px 32px;
-    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
 }
-#random:active {
+#random-button:active {
+    width: 7.9rem;
+    height: 3.9rem;
     background-color: var(--dark-green);
 }
 
@@ -125,7 +137,9 @@ footer{
     padding: 0.1rem;
     color: var(--white);
 }
-
+#filter-setting{
+    padding: 1rem;
+}
 .filter-setting-modal::backdrop{
     background-color: rgba(0, 0, 0, 0.3);
     animation: fade-in 0.3s ease-out;
@@ -136,6 +150,7 @@ footer{
 .filter-setting-modal{
     width: 50vw;
     height: 50vh;
+    background-color: var(--beige);
     position: fixed;
     margin: 0;
     left: 50%;
@@ -148,6 +163,10 @@ footer{
 
 .filter-setting-modal[open] {
     animation: slide-up 0.4s ease-out;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .filter-setting-modal.hide{
     animation: slide-down 0.5s ease-out;
@@ -193,4 +212,64 @@ footer{
     100% {
         opacity: 0;
     }
+}
+
+.list-option-button{
+    margin: 0%;
+    padding: 0%;
+    /* width: 30px;
+    height: 30px; */
+    background-color: var(--beige);
+    border: none;
+}
+.list-option-button:active{
+    width: 10;
+    height: 10;
+}
+.list-option-button svg{
+    
+}
+.dialog-title{
+    font-size: larger;
+    color:var(--dark-green);
+}
+.dialog-content{
+    padding-top: 0.5rem;
+}
+.list-option{
+    padding-bottom: 0.5rem;
+}
+#question-button{
+    outline: none;
+}
+#searching-row{
+    height: 1.2rem;
+    width: 80%;
+    margin: 4%;
+    padding: 0%;
+    border: solid;
+    border-color: var(--dark-green);
+    border-radius: 10px;
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+}
+#searching-text{
+    flex: 1;
+    /* width: 200em; */
+    /* box-sizing: border-box; */
+}
+#searching-text input{
+    width: 100%;
+    height: 1rem;
+    background-color: transparent;
+    border: none;
+    caret-color: auto;
+    outline: none;
+    margin-left: 0.2rem;
+    box-sizing: border-box;
+}
+#searching-button{
+    align-items: last baseline;
+    margin-right: 0.4rem;
 }

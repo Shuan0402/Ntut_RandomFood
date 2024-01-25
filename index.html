@@ -81,48 +81,96 @@
                             </ul>
                         </details>
                     </div>
-                    <div id="blacklist">
+                    <div class="dialog" id="blacklist">
                         <label class="filter-setting-title" onclick="clickBlacklist()">Blacklist 黑名單</label>
                         <dialog class="filter-setting-modal" id="blacklist-modal">
-                            <div>
-                                <label>Blacklist 黑名單</label>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                                    <circle cx="10" cy="10" r="8" stroke="#557653" stroke-width="2" fill="transparent"/> 
-                                    <text x="5.5" y="15" font-family="Arial" font-size="16" fill="#557653">?</text>
-                                </svg>   
+                            <div class="dialog-content">
+                                <label class="dialog-title">Blacklist 黑名單</label>
+                                <button class="list-option-button" id="question-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" class="image">
+                                        <circle cx="50%" cy="50%" r="40%" stroke="#557653" stroke-width="1.5" fill="transparent"/> 
+                                        <text x="33%" y="73%" font-family="Arial" font-size="10" fill="#557653">?</text>
+                                    </svg>   
+                                </button>
                             </div>
-                            <div>
-                                <label><input type="text"></label>
-                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="8" cy="8" r="6" stroke="#557653" stroke-width="2" fill="transparent"/> 
-                                    <line x1="12" y1="12" x2="20" y2="20" stroke="#557653" stroke-width="2">
-                                </svg>
+                            <div class="dialog-content" id="searching-row">
+                                <label id="searching-text"><input type="text"></label>
+                                <button class="list-option-button" id="searching-button">
+                                    <svg width="1rem" height="1rem" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="40%" cy="40%" r="35%" stroke="#557653" stroke-width="2" fill="transparent"/> 
+                                        <line x1="65%" y1="65%" x2="100%" y2="100%" stroke="#557653" stroke-width="2">
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="option-list" id="blacklist-option">
+                                <div class="list-option">
+                                    <label>shop1</label>
+                                    <button class="list-option-button" onclick="deleteDiv(this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+                                            <line x1="0%" y1="0%" x2="100%" y2="100%" stroke="#557653" stroke-width="2"/>
+                                            <line x1="0%" y1="100%" x2="100%" y2="0%" stroke="#557653" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="list-option">
+                                    <label>shop2</label>
+                                    <button class="list-option-button" onclick="deleteDiv(this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+                                            <line x1="0%" y1="0%" x2="100%" y2="100%" stroke="#557653" stroke-width="2"/>
+                                            <line x1="0%" y1="100%" x2="100%" y2="0%" stroke="#557653" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </dialog>
                     </div>
-                    <div>
-                        <label class="filter-setting-title" onclick="clickBlacklist()">Preference list 偏好名單</label>
-                        <dialog class="filter-setting-modal">
-                            <div>
-                                <label>Blacklist 黑名單</label>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                                    <circle cx="10" cy="10" r="8" stroke="#557653" stroke-width="2" fill="transparent"/> 
-                                    <text x="5.5" y="15" font-family="Arial" font-size="16" fill="#557653">?</text>
-                                </svg>   
+                    <div id="whitelist">
+                        <label class="filter-setting-title" onclick="clickWhitelist()">Preference list 偏好名單</label>
+                        <dialog class="filter-setting-modal" id="whitelist-modal">
+                            <div class="dialog-content">
+                                <label class="dialog-title">Preference list 偏好名單</label>
+                                <button class="list-option-button" id="question-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" class="image">
+                                        <circle cx="50%" cy="50%" r="40%" stroke="#557653" stroke-width="1.5" fill="transparent"/> 
+                                        <text x="33%" y="73%" font-family="Arial" font-size="10" fill="#557653">?</text>
+                                    </svg>   
+                                </button>
                             </div>
-                            <div>
-                                <label><input type="text"></label>
-                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="8" cy="8" r="6" stroke="#557653" stroke-width="2" fill="transparent"/> 
-                                    <line x1="12" y1="12" x2="20" y2="20" stroke="#557653" stroke-width="2">
-                                </svg>
+                            <div class="dialog-content" id="searching-row">
+                                <label id="searching-text"><input type="text"></label>
+                                <button class="list-option-button" id="searching-button">
+                                    <svg width="1rem" height="1rem" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="40%" cy="40%" r="35%" stroke="#557653" stroke-width="2" fill="transparent"/> 
+                                        <line x1="65%" y1="65%" x2="100%" y2="100%" stroke="#557653" stroke-width="2">
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="option-list" id="blacklist-option">
+                                <div class="list-option">
+                                    <label>shop1</label>
+                                    <button class="list-option-button" onclick="deleteDiv(this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+                                            <line x1="0%" y1="0%" x2="100%" y2="100%" stroke="#557653" stroke-width="2"/>
+                                            <line x1="0%" y1="100%" x2="100%" y2="0%" stroke="#557653" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="list-option">
+                                    <label>shop2</label>
+                                    <button class="list-option-button" onclick="deleteDiv(this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+                                            <line x1="0%" y1="0%" x2="100%" y2="100%" stroke="#557653" stroke-width="2"/>
+                                            <line x1="0%" y1="100%" x2="100%" y2="0%" stroke="#557653" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </dialog>
                     </div>
                     
                 </div>
                 <div id="button-content">
-                    <button id="random">RANDOM</button>
+                    <button id="random-button">RANDOM</button>
                 </div>
             </div>
         </div>

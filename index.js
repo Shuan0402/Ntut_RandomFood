@@ -31,6 +31,11 @@ function clickBlacklist(){
     modal.showModal();
 }
 
+function clickWhitelist(){
+    let modal=document.getElementById("whitelist-modal");
+    modal.showModal();
+}
+
 function dialogClose(){
     let dialogs=document.getElementsByClassName("filter-setting-modal");
     Array.from(dialogs).forEach(dialog => {
@@ -53,3 +58,8 @@ function dialogClose(){
 }
 
 dialogClose();
+
+function deleteShop(button) {
+    let divToDelete = button.closest('.list-option');
+    divToDelete.remove();
+}
