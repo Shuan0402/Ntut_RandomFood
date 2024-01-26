@@ -3,6 +3,7 @@
     --dark-beige: #d6c198;
     --dark-green: #557653;
     --light-green: #7b9f6a;
+    --option-backgroung: #DAE0CF;
     --white: #FFFFFF;
     --dialog-background: rgba(0, 0, 0, 0.3);
 }
@@ -220,8 +221,6 @@ footer{
 .list-option-button{
     margin: 0%;
     padding: 0%;
-    /* width: 30px;
-    height: 30px; */
     background-color: var(--beige);
     border: none;
 }
@@ -235,34 +234,52 @@ footer{
     color:var(--dark-green);
 }
 .dialog-content{
-    padding-top: 0.5rem;
+    margin-top: 0.5rem;
 }
 .list-option{
-    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
-#question-button{
+.question-button{
     outline: none;
 }
-#searching-row{
+.searching-row{
     height: 1.2rem;
     width: 80%;
     margin: 4%;
     padding: 0%;
-    border: solid;
-    border-color: var(--dark-green);
-    border-radius: 10px;
     display: flex;
-    /* flex-direction: row; */
-    align-items: center;
+    justify-content: center;
+    position: relative;
 }
-#searching-text{
-    flex: 1;
-    /* width: 200em; */
-    /* box-sizing: border-box; */
-}
-#searching-text input{
+.searching-box{
     width: 100%;
-    height: 1rem;
+    /* width: fit-content; */
+    padding-top: 1.2rem;
+    height: fit-content;
+    z-index: 10;
+    background-color: var(--option-backgroung);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    border: 2px solid var(--light-green);
+}
+.searching-text{
+    position: absolute;
+    display: flex;
+    width: calc(100% - 4px);
+    /* width: fit-content; */
+    height: 1.2rem;
+    justify-content: center;
+    border: solid 2px var(--dark-green);
+    border-radius: 0.6rem;
+    background-color: var(--beige);
+    
+    top: 0;
+    left: 0;
+    z-index: 11;
+}
+.searching-text input{
+    flex: 1;
+    height: 1.2rem;
     background-color: transparent;
     border: none;
     caret-color: auto;
@@ -270,9 +287,11 @@ footer{
     margin-left: 0.2rem;
     box-sizing: border-box;
 }
-#searching-button{
-    align-items: last baseline;
+.searching-button{
     margin-right: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .filter-setting-modal.explain-modal{
@@ -291,4 +310,16 @@ footer{
 
 .title{
     font-weight: bold;
+}
+
+
+.searching-options {
+    display: flex;
+    flex-direction: column;
+}
+.searching-options label{
+    padding: 0.2rem;
+}
+.searching-options label:hover{
+    background-color: var(--light-green);
 }

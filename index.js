@@ -55,6 +55,10 @@ function dialogClose(){
 dialogClose();
 
 function deleteShop(shop_id) {
-    let divToDelete = getElementById(shop_id);
+    let divToDelete = document.getElementById(shop_id);
     divToDelete.remove();
+}
+
+function deleteShop2(delete_button){
+    delete_button.parentElement.remove();
 }
