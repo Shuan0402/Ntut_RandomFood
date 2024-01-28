@@ -1,17 +1,41 @@
 function styleCheckAll() {
     const selectAllOption = document.getElementsByName("all-style-checkbox")[0];
     const options = document.getElementsByName("style-checkbox");
-    for (let i = 0; i < options.length; i++) {
-        options[i].checked = selectAllOption.checked;
-    }
+    options.forEach(option => {
+        option.checked = selectAllOption.checked;
+    });
+}
+
+function styleOptionClicked() {
+    const selectAllOption = document.getElementsByName("all-style-checkbox")[0];
+    const options = document.getElementsByName("style-checkbox");
+    let allChecked = true;
+    options.forEach(option => {
+        if (!option.checked) {
+            allChecked = false;
+        }
+    });
+    selectAllOption.checked = allChecked;
 }
 
 function categoryCheckAll() {
     const selectAllOption = document.getElementsByName("all-category-checkbox")[0];
     const options = document.getElementsByName("category-checkbox");
-    for (let i = 0; i < options.length; i++) {
-        options[i].checked = selectAllOption.checked;
-    }
+    options.forEach(option => {
+        option.checked = selectAllOption.checked;
+    });
+}
+
+function categoryOptionClicked() {
+    const selectAllOption = document.getElementsByName("all-category-checkbox")[0];
+    const options = document.getElementsByName("category-checkbox");
+    let allChecked = true;
+    options.forEach(option => {
+        if (!option.checked) {
+            allChecked = false;
+        }
+    });
+    selectAllOption.checked = allChecked;
 }
 
 function clickDialog(dialog_id){
@@ -19,11 +43,11 @@ function clickDialog(dialog_id){
     modal.showModal();
 }
 
-// TODO: only the top dialog should be close when there are two dialogs is open.
 function dialogClose(){
     let dialogs=document.getElementsByClassName("filter-setting-modal");
     Array.from(dialogs).forEach(dialog => {
         dialog.addEventListener("click", e => {
+            if (e.target != dialog) return;
             const dialogDimensions = dialog.getBoundingClientRect()
             if (e.clientX < dialogDimensions.left ||
                 e.clientX > dialogDimensions.right ||

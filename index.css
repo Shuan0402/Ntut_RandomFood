@@ -223,10 +223,12 @@ button {
 
 .searching-options label {
     padding: 0.2rem;
+    color: var(--light-green);
 }
 
 .searching-options label:hover {
     background-color: var(--light-green);
+    color: var(--option-backgroung);
 }
 
 .filter-setting-modal.hint-modal {
