@@ -1,28 +1,16 @@
 function styleCheckAll() {
-    let option=document.getElementsByName("style-checkbox");
-    if (option[0].checked){
-        for (let i=1; i<option.length; i++){
-            option[i].checked=true;
-        }
-    }
-    else{
-        for (let i=1; i<option.length; i++){
-            option[i].checked=false;
-        }
+    const selectAllOption = document.getElementsByName("all-style-checkbox")[0];
+    const options = document.getElementsByName("style-checkbox");
+    for (let i = 0; i < options.length; i++) {
+        options[i].checked = selectAllOption.checked;
     }
 }
 
 function categoryCheckAll() {
-    let option=document.getElementsByName("category-checkbox");
-    if (option[0].checked){
-        for (let i=1; i<option.length; i++){
-            option[i].checked=true;
-        }
-    }
-    else{
-        for (let i=1; i<option.length; i++){
-            option[i].checked=false;
-        }
+    const selectAllOption = document.getElementsByName("all-category-checkbox")[0];
+    const options = document.getElementsByName("category-checkbox");
+    for (let i = 0; i < options.length; i++) {
+        options[i].checked = selectAllOption.checked;
     }
 }
 
@@ -31,6 +19,7 @@ function clickDialog(dialog_id){
     modal.showModal();
 }
 
+// TODO: only the top dialog should be close when there are two dialogs is open.
 function dialogClose(){
     let dialogs=document.getElementsByClassName("filter-setting-modal");
     Array.from(dialogs).forEach(dialog => {
@@ -57,8 +46,4 @@ dialogClose();
 function deleteShop(shop_id) {
     let divToDelete = document.getElementById(shop_id);
     divToDelete.remove();
-}
-
-function deleteShop2(delete_button){
-    delete_button.parentElement.remove();
 }

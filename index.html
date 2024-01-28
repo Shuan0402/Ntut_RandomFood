@@ -5,28 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ntut Random Food</title>
     <link rel="icon" href="" type="image/x-icon"/>
+    <link rel="stylesheet" href="/animation.css" type="text/css">
     <link rel="stylesheet" href="/index.css" type="text/css">
 </head>
 <body>
     <header>
         <button id="side-menu-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                <line x1="3" y1="8" x2="27" y2="8" stroke="#557653" stroke-width="4" stroke-linecap="round"/>
-                <line x1="3" y1="16" x2="27" y2="16" stroke="#557653" stroke-width="4" stroke-linecap="round"/>
-                <line x1="3" y1="24" x2="27" y2="24" stroke="#557653" stroke-width="4" stroke-linecap="round"/>
-            </svg>
+            <img src="img/side_menu_button.svg" />
         </button>
     </header>
     <main>
-        <div id="main-content">
-            <h1 id="title">NTUT Random Food</h1>
+        <div id="main-container">
+            <h1>NTUT Random Food</h1>
             <div>
-                <div id="filter-setting">
-                    <div id="style">
-                        <details id="style-details">
+                <div id="filter-setting-container">
+                    <div id="style-container">
+                        <details id="style-details-container" class="filter-detials">
                             <summary class="filter-setting-title">Style 風格</summary>
-                            <ul class="filter-setting-option">
-                                <label onclick="styleCheckAll()"><input type="checkbox" name="style-checkbox">All 全選</label>
+                            <div class="filter-setting-options">
+                                <label><input type="checkbox" name="all-style-checkbox" onclick="styleCheckAll()">All 全選</label>
                                 <label><input type="checkbox" name="style-checkbox">Chinese 中式</label>
                                 <label><input type="checkbox" name="style-checkbox">Taiwanese 台式</label>
                                 <label><input type="checkbox" name="style-checkbox">Hong Kong 港式</label>
@@ -38,14 +35,14 @@
                                 <label><input type="checkbox" name="style-checkbox">India 印度</label>
                                 <label><input type="checkbox" name="style-checkbox">Southeast Asia 東南亞</label>
                                 <label><input type="checkbox" name="style-checkbox">Others 其他</label>
-                            </ul>
+                            </div>
                         </details>
                     </div>
-                    <div id = category>
-                        <details id="category-details">
+                    <div id="category-container">
+                        <details id="category-details-container" class="filter-detials">
                             <summary class="filter-setting-title">Category 分類</summary>
-                            <ul class="filter-setting-option">
-                                <label onclick="categoryCheckAll()"><input type="checkbox" name="category-checkbox">All 全選</label>
+                            <div class="filter-setting-options">
+                                <label><input type="checkbox" name="all-category-checkbox" onclick="categoryCheckAll()">All 全選</label>
                                 <label><input type="checkbox" name="category-checkbox">Rice 飯</label>
                                 <label><input type="checkbox" name="category-checkbox">Noodle 麵食</label>
                                 <label><input type="checkbox" name="category-checkbox">Vegetarian diet 素食</label>
@@ -68,40 +65,41 @@
                                 <label><input type="checkbox" name="category-checkbox">Bread, Dessert<br>&emsp;&thinsp;麵包、甜點</label>
                                 <label><input type="checkbox" name="category-checkbox">Convenient store<br>&emsp;&thinsp;便利商店</label>
                                 <label><input type="checkbox" name="category-checkbox">Others 其他</label>
-                            </ul>
+                            </div>
                         </details>
                     </div>
-                    <div id="distaance">
-                        <details id="distance-details">
+                    <div id="distaance-container">
+                        <details id="distance-details-container" class="filter-detials">
                             <summary class="filter-setting-title">Distance 距離</summary>
-                            <ul class="filter-setting-option">
+                            <div class="filter-setting-options">
                                 <label><input type="checkbox">Intramural 校內</label>
                                 <label><input type="checkbox">Dormitory, Guanghua<br>&emsp;&thinsp;宿舍、光華</label>
                                 <label><input type="checkbox">Farther 更遠</label>
-                            </ul>
+                            </div>
                         </details>
                     </div>
-                    <div class="dialog" id="blacklist">
+                    <div class="shop-list" id="blacklist">
                         <label class="filter-setting-title" onclick="clickDialog('blacklist-modal')">Blacklist 黑名單</label>
                         <dialog class="filter-setting-modal" id="blacklist-modal">
                             <div class="dialog-content">
                                 <label class="dialog-title">Blacklist 黑名單</label>
-                                <button class="list-option-button question-button" onclick="clickDialog('blacklist-explain')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" class="image">
-                                        <circle cx="50%" cy="50%" r="40%" stroke="#557653" stroke-width="1.5" fill="transparent"/> 
-                                        <text x="33%" y="73%" font-family="Arial" font-size="10" fill="#557653">?</text>
-                                    </svg>   
+                                <button class="hint-button" onclick="clickDialog('blacklist-hint')">
+                                    <img src="img/hint_button.svg" />
                                 </button>
+                                <dialog class="filter-setting-modal hint-modal" id="blacklist-hint">
+                                    <div class="hint-content">
+                                        <label>Blacklist 黑名單</label>
+                                        <p>黑名單中的所有店家都會被排除，<br>確保在隨機抽取時不會抽到這些店家。</p>
+                                        <p>All the stores in the blacklist will be excluded,ensuring that they will not be drawn when randomly selecting.</p>
+                                    </div>
+                                </dialog>
                             </div>
                             <div class="dialog-content searching-row">
                                 <div class="searching-box">
                                     <div class="searching-text">
                                         <input type="text" placeholder="請輸入店家名稱">
-                                        <button class="list-option-button searching-button">
-                                            <svg width="1rem" height="1rem" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="40%" cy="40%" r="35%" stroke="#557653" stroke-width="2" fill="transparent"/> 
-                                                <line x1="65%" y1="65%" x2="100%" y2="100%" stroke="#557653" stroke-width="2">
-                                            </svg>
+                                        <button class="searching-button">
+                                            <img src="img/search_button.svg" />
                                         </button>
                                     </div>
                                     <div class="searching-options">
@@ -110,56 +108,44 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="option-list" id="blacklist-option">
-                                <div class="list-option" id="blacklist-option-shop1">
+                            <div class="shops-list" id="blacklist-options">
+                                <div class="shop-option" id="blacklist-option-shop1">
                                     <label>shop1</label>
-                                    <button class="list-option-button" onclick="deleteShop('blacklist-option-shop1')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
-                                            <line x1="0%" y1="0%" x2="100%" y2="100%" stroke="#557653" stroke-width="2"/>
-                                            <line x1="0%" y1="100%" x2="100%" y2="0%" stroke="#557653" stroke-width="2"/>
-                                        </svg>
+                                    <button onclick="deleteShop('blacklist-option-shop1')">
+                                        <img src="img/remove_button.svg" />
                                     </button>
                                 </div>
-                                <div class="list-option" id="blacklist-option-shop2">
+                                <div class="shop-option" id="blacklist-option-shop2">
                                     <label>shop2</label>
-                                    <button class="list-option-button" onclick="deleteShop('blacklist-option-shop2')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
-                                            <line x1="0%" y1="0%" x2="100%" y2="100%" stroke="#557653" stroke-width="2"/>
-                                            <line x1="0%" y1="100%" x2="100%" y2="0%" stroke="#557653" stroke-width="2"/>
-                                        </svg>
+                                    <button onclick="deleteShop('blacklist-option-shop2')">
+                                        <img src="img/remove_button.svg" />
                                     </button>
                                 </div>
-                            </div>
-                        </dialog>
-                        <dialog class="filter-setting-modal explain-modal" id="blacklist-explain">
-                            <div class="explain-content">
-                                <label class="title">Blacklist 黑名單</label>
-                                <p>黑名單中的所有店家都會被排除，<br>確保在隨機抽取時不會抽到這些店家。</p>
-                                <p>All the stores in the blacklist will be excluded,ensuring that they will not be drawn when randomly selecting.</p>
                             </div>
                         </dialog>
                     </div>
-                    <div class="dialog" id="whitelist">
+                    <div class="shop-list" id="whitelist">
                         <label class="filter-setting-title" onclick="clickDialog('whitelist-modal')">Preference list 偏好名單</label>
                         <dialog class="filter-setting-modal" id="whitelist-modal">
                             <div class="dialog-content">
                                 <label class="dialog-title">Preference list 偏好名單</label>
-                                <button class="list-option-button question-button" onclick="clickDialog('whitelist-explain')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" class="image">
-                                        <circle cx="50%" cy="50%" r="40%" stroke="#557653" stroke-width="1.5" fill="transparent"/> 
-                                        <text x="33%" y="73%" font-family="Arial" font-size="10" fill="#557653">?</text>
-                                    </svg>   
+                                <button class="hint-button" onclick="clickDialog('whitelist-hint')">
+                                    <img src="img/hint_button.svg" />
                                 </button>
+                                <dialog class="filter-setting-modal hint-modal" id="whitelist-hint">
+                                    <div class="hint-content">
+                                        <label class="title">Preferencelist 偏好名單</label>
+                                        <p>偏好名單中的所有店家權重都會提升，<br>使其在隨機抽取時被抽中的機率更高。</p>
+                                        <p>All the stores in the preferred list will have their weights increased, increasing the probability of being selected during random sampling.</p>
+                                    </div>
+                                </dialog>
                             </div>
                             <div class="dialog-content searching-row">
                                 <div class="searching-box">
                                     <div class="searching-text">
                                         <input type="text" placeholder="請輸入店家名稱">
-                                        <button class="list-option-button searching-button">
-                                            <svg width="1rem" height="1rem" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="40%" cy="40%" r="35%" stroke="#557653" stroke-width="2" fill="transparent"/> 
-                                                <line x1="65%" y1="65%" x2="100%" y2="100%" stroke="#557653" stroke-width="2">
-                                            </svg>
+                                        <button class="searching-button">
+                                            <img src="img/search_button.svg" />
                                         </button>
                                     </div>
                                     <div class="searching-options">
@@ -168,38 +154,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="option-list" id="whitelist-option">
-                                <div class="list-option" id="whitelist-option-shop1">
+                            <div class="shops-list" id="whitelist-option">
+                                <div class="shop-option" id="whitelist-option-shop1">
                                     <label>shop1</label>
-                                    <button class="list-option-button" onclick="deleteShop('whitelist-option-shop1')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
-                                            <line x1="0%" y1="0%" x2="100%" y2="100%" stroke="#557653" stroke-width="2"/>
-                                            <line x1="0%" y1="100%" x2="100%" y2="0%" stroke="#557653" stroke-width="2"/>
-                                        </svg>
+                                    <button onclick="deleteShop('whitelist-option-shop1')">
+                                        <img src="img/remove_button.svg" />
                                     </button>
                                 </div>
-                                <div class="list-option" id="whitelist-option-shop2">
+                                <div class="shop-option" id="whitelist-option-shop2">
                                     <label>shop2</label>
-                                    <button class="list-option-button" onclick="deleteShop('whitelist-option-shop2')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
-                                            <line x1="0%" y1="0%" x2="100%" y2="100%" stroke="#557653" stroke-width="2"/>
-                                            <line x1="0%" y1="100%" x2="100%" y2="0%" stroke="#557653" stroke-width="2"/>
-                                        </svg>
+                                    <button onclick="deleteShop('whitelist-option-shop2')">
+                                        <img src="img/remove_button.svg" />
                                     </button>
                                 </div>
-                            </div>
-                        </dialog>
-                        <dialog class="filter-setting-modal explain-modal" id="whitelist-explain">
-                            <div class="explain-content">
-                                <label class="title">Preferencelist 偏好名單</label>
-                                <p>偏好名單中的所有店家權重都會提升，<br>使其在隨機抽取時被抽中的機率更高。</p>
-                                <p>All the stores in the preferred list will have their weights increased,increasing the probability of being selected during random sampling.</p>
                             </div>
                         </dialog>
                     </div>
-                    
                 </div>
-                <div id="button-content">
+                <div id="random-button-container">
                     <button id="random-button">RANDOM</button>
                 </div>
             </div>
