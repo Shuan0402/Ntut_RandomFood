@@ -8,6 +8,7 @@
     --dialog-background: rgba(0, 0, 0, 0.3);
 }
 
+
 html, body {
     display: flex;
     flex-direction: column;
@@ -21,6 +22,7 @@ html, body {
     caret-color: transparent;
 }
 
+
 main {
     flex-grow: 1;
     color: var(--light-green);
@@ -28,8 +30,9 @@ main {
 
 header {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     height: 2.5rem;
+    margin-right: auto;
 }
 
 footer {
@@ -48,8 +51,38 @@ button {
     border: none;
 }
 
+#side-menu-container {
+    display: flex;
+    flex-direction: column;
+    z-index: 12;
+    min-height: 100vh;
+    background-color: var(--light-green);
+    color: var(--white);
+}
+
+#side-menu-title {
+    display: flex;
+    align-items: center;
+    font-size: large; 
+}
+
 #side-menu-button {
-    margin-left: 0.5rem;
+    margin: 0.7rem;
+}
+
+#side-menu-title>label {
+    margin-bottom: 0.4rem;
+}
+
+#side-menu-options {
+    display: flex;
+    flex-direction: column;   
+    padding: 0.8rem;
+    align-items: center;
+}
+
+.side-menu-option{
+    margin: 0.5rem;
 }
 
 #main-container {
