@@ -80,24 +80,28 @@ function clickSideMenuButton(){
     // sideMenuCheckbox.checked = !sideMenuCheckbox.checked;
     // if(sideMenuCheckbox.checked) {
 
-    const sideMenuButtonAnimationEndHandler = () => {
-        sideMenuButton.classList.remove('show');
-        sideMenuButton.removeEventListener('animationend',  arguments.callee, false);
-    }
-    const sideMenuAnimationEndHandler = () => {
-        sideMenu.classList.remove('close');
-        sideMenu.removeEventListener('animationend',  arguments.callee, false);
-
-        sideMenuButton.classList.add('show');
-        sideMenuButton.addEventListener('animationend', sideMenuButtonAnimationEndHandler, false);
-    }
+    const addSideMenuButtonShowAnimationEndHandler = () => {
+        sideMenuButton.addEventListener('animationend', function() {
+            sideMenuButton.classList.remove('show');
+            sideMenuButton.removeEventListener('animationend',  arguments.callee, false);
+        }, false);
+    };
+    const addSideMenuCloseAnimationEndHandler = () => {
+        sideMenu.addEventListener('animationend', function() {
+            sideMenu.classList.remove('close');
+            sideMenu.removeEventListener('animationend', arguments.callee, false);
+    
+            sideMenuButton.classList.add('show');
+            addSideMenuButtonShowAnimationEndHandler();
+        }, false);
+    };
 
     if(sideMenu.classList.contains('open')) {
         sideMenu.classList.remove('open');
         sideMenuButton.classList.remove('open');
 
         sideMenu.classList.add('close');
-        sideMenu.addEventListener('animationend', sideMenuAnimationEndHandler, false);
+        addSideMenuCloseAnimationEndHandler();
     }
     else{
         sideMenu.classList.add('open');
