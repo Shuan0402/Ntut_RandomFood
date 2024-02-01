@@ -52,12 +52,20 @@ button {
 }
 
 #side-menu-container {
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     z-index: 12;
     min-height: 100vh;
     background-color: var(--light-green);
     color: var(--white);
+    /* animation: side-menu-close-down 0.4s ease-out; */
+}
+
+#side-menu-container.open {
+    visibility: visible;
+    animation: side-menu-open-up 0.5s ease-out;
+    /* background-color: var(--dark-green); */
 }
 
 #side-menu-title {
@@ -67,7 +75,23 @@ button {
 }
 
 #side-menu-button {
+    width: 30px;
+    height: 30px;
+    /* background-color: #557653; */
     margin: 0.7rem;
+    visibility: visible;
+    background-size: contain;
+    background-image: url("./img/side_menu_button.svg");
+}
+
+#side-menu-button.open{
+    /* color: var(--beige); */
+    /* background-color: var(--white); */
+    background-image: url("./img/side_menu_open_button.svg");
+}
+
+#side-menu-checkbox {
+    visibility: hidden;
 }
 
 #side-menu-title>label {

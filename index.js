@@ -71,3 +71,18 @@ function deleteShop(shop_id) {
     let divToDelete = document.getElementById(shop_id);
     divToDelete.remove();
 }
+
+function clickSideMenuButton(){
+    let sideMenu = document.getElementById('side-menu-container');
+    let sideMenuButton = document.getElementById('side-menu-button');
+    let sideMenuCheckbox = document.getElementById('side-menu-checkbox');
+    sideMenuCheckbox.checked = !sideMenuCheckbox.checked;
+    if(sideMenuCheckbox.checked) {
+        sideMenu.classList.add('open');
+        sideMenuButton.classList.add('open');
+    }
+    else{
+        sideMenu.classList.remove('open');
+        sideMenuButton.classList.remove('open');
+    }
+}
