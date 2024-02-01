@@ -59,13 +59,16 @@ button {
     min-height: 100vh;
     background-color: var(--light-green);
     color: var(--white);
-    /* animation: side-menu-close-down 0.4s ease-out; */
 }
 
 #side-menu-container.open {
     visibility: visible;
-    animation: side-menu-open-up 0.5s ease-out;
-    /* background-color: var(--dark-green); */
+    animation: side-menu-open 0.5s ease-out;
+}
+
+#side-menu-container.close {
+    visibility: visible;
+    animation: side-menu-close 0.5s ease-out;
 }
 
 #side-menu-title {
@@ -77,7 +80,6 @@ button {
 #side-menu-button {
     width: 30px;
     height: 30px;
-    /* background-color: #557653; */
     margin: 0.7rem;
     visibility: visible;
     background-size: contain;
@@ -85,9 +87,11 @@ button {
 }
 
 #side-menu-button.open{
-    /* color: var(--beige); */
-    /* background-color: var(--white); */
     background-image: url("./img/side_menu_open_button.svg");
+}
+
+#side-menu-button.show{
+    animation: side-menu-button-show 0.2s ease-out;
 }
 
 #side-menu-checkbox {

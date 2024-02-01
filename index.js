@@ -84,5 +84,15 @@ function clickSideMenuButton(){
     else{
         sideMenu.classList.remove('open');
         sideMenuButton.classList.remove('open');
+        sideMenu.classList.add('close');
+        sideMenu.addEventListener('animationend', function(){
+            sideMenu.classList.remove('close');
+            sideMenu.removeEventListener('animationend',  arguments.callee, false);
+            sideMenuButton.classList.add('show');
+            sideMenuButton.addEventListener('animationend', function(){
+                sideMenuButton.classList.remove('show');
+                sideMenuButton.removeEventListener('animationend',  arguments.callee, false);
+            }, false);
+        }, false);
     }
 }

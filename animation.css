@@ -42,7 +42,7 @@
     }
 }
 
-@keyframes side-menu-open-up {
+@keyframes side-menu-open {
     0% {
         opacity: 0;
         transform: translate(-50%, 0);
@@ -54,7 +54,7 @@
     }
 }
 
-@keyframes side-menu-close-down {
+@keyframes side-menu-close {
     0% {
         opacity: 1;
         transform: translate(0, 0);
@@ -63,5 +63,15 @@
     100% {
         opacity: 0;
         transform: translate(-50%, 0);
+    }
+}
+
+@keyframes side-menu-button-show {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
