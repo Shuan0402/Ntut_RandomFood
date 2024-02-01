@@ -75,24 +75,32 @@ function deleteShop(shop_id) {
 function clickSideMenuButton(){
     let sideMenu = document.getElementById('side-menu-container');
     let sideMenuButton = document.getElementById('side-menu-button');
-    let sideMenuCheckbox = document.getElementById('side-menu-checkbox');
-    sideMenuCheckbox.checked = !sideMenuCheckbox.checked;
-    if(sideMenuCheckbox.checked) {
-        sideMenu.classList.add('open');
-        sideMenuButton.classList.add('open');
+    // let sideMenuCheckbox = document.getElementById('side-menu-checkbox');
+
+    // sideMenuCheckbox.checked = !sideMenuCheckbox.checked;
+    // if(sideMenuCheckbox.checked) {
+
+    const sideMenuButtonAnimationEndHandler = () => {
+        sideMenuButton.classList.remove('show');
+        sideMenuButton.removeEventListener('animationend',  arguments.callee, false);
     }
-    else{
+    const sideMenuAnimationEndHandler = () => {
+        sideMenu.classList.remove('close');
+        sideMenu.removeEventListener('animationend',  arguments.callee, false);
+
+        sideMenuButton.classList.add('show');
+        sideMenuButton.addEventListener('animationend', sideMenuButtonAnimationEndHandler, false);
+    }
+
+    if(sideMenu.classList.contains('open')) {
         sideMenu.classList.remove('open');
         sideMenuButton.classList.remove('open');
+
         sideMenu.classList.add('close');
-        sideMenu.addEventListener('animationend', function(){
-            sideMenu.classList.remove('close');
-            sideMenu.removeEventListener('animationend',  arguments.callee, false);
-            sideMenuButton.classList.add('show');
-            sideMenuButton.addEventListener('animationend', function(){
-                sideMenuButton.classList.remove('show');
-                sideMenuButton.removeEventListener('animationend',  arguments.callee, false);
-            }, false);
-        }, false);
+        sideMenu.addEventListener('animationend', sideMenuAnimationEndHandler, false);
+    }
+    else{
+        sideMenu.classList.add('open');
+        sideMenuButton.classList.add('open');
     }
 }
