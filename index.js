@@ -54,8 +54,8 @@ function dialogClose(){
                 e.clientY < dialogDimensions.top ||
                 e.clientY > dialogDimensions.bottom) {
                 
-                    filter_dialog.classList.add('hide');
-                    filter_dialog.addEventListener('animationend', function(){
+                filter_dialog.classList.add('hide');
+                filter_dialog.addEventListener('animationend', function(){
                     filter_dialog.classList.remove('hide');
                     filter_dialog.close();
                     filter_dialog.removeEventListener('animationend',  arguments.callee, false);
@@ -64,25 +64,46 @@ function dialogClose(){
         })
     });
 
-    let sideMenu_dialogs=document.getElementsByClassName("side-menu-modal");
-    Array.from(sideMenu_dialogs).forEach(sideMenu_dialog => {
-        sideMenu_dialog.addEventListener("click", e => {
-            if (e.target != sideMenu_dialog) return;
-            const dialogDimensions = sideMenu_dialog.getBoundingClientRect()
+    let sideMenuOption_dialogs=document.getElementsByClassName("side-menu-modal");
+    Array.from(sideMenuOption_dialogs).forEach(sideMenuOption_dialog => {
+        sideMenuOption_dialog.addEventListener("click", e => {
+            if (e.target != sideMenuOption_dialog) return;
+            const dialogDimensions = sideMenuOption_dialog.getBoundingClientRect()
             if (e.clientX < dialogDimensions.left ||
                 e.clientX > dialogDimensions.right ||
                 e.clientY < dialogDimensions.top ||
                 e.clientY > dialogDimensions.bottom) {
                 
-                    sideMenu_dialog.classList.add('hide');
-                    sideMenu_dialog.addEventListener('animationend', function(){
-                    sideMenu_dialog.classList.remove('hide');
-                    sideMenu_dialog.close();
-                    sideMenu_dialog.removeEventListener('animationend',  arguments.callee, false);
+                sideMenuOption_dialog.classList.add('hide');
+                sideMenuOption_dialog.addEventListener('animationend', function(){
+                    sideMenuOption_dialog.classList.remove('hide');
+                    sideMenuOption_dialog.close();
+                    sideMenuOption_dialog.removeEventListener('animationend',  arguments.callee, false);
                 }, false);
             }
         })
     });
+
+    let sideMenu_dialog=document.getElementById("side-menu-container");
+    let sideMenuButton = document.getElementById('side-menu-button');
+    sideMenu_dialog.addEventListener("click", e => {
+        console.log('click');
+        if (e.target != sideMenu_dialog) return;
+        const dialogDimensions = sideMenu_dialog.getBoundingClientRect()
+        if (e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom) {
+            sideMenu_dialog.classList.remove('open');
+            sideMenuButton.classList.remove('open');
+            sideMenu_dialog.classList.add('close');
+            sideMenu_dialog.addEventListener('animationend', function(){
+                sideMenu_dialog.classList.remove('close');
+                sideMenu_dialog.close();
+                sideMenu_dialog.removeEventListener('animationend',  arguments.callee, false);
+            }, false);
+        }
+    })
 }
 
 dialogClose();
@@ -95,7 +116,6 @@ function deleteShop(shop_id) {
 function clickSideMenuButton(){
     let sideMenu = document.getElementById('side-menu-container');
     let sideMenuButton = document.getElementById('side-menu-button');
-    let mainContainer = document.getElementById('main-container');
 
     const addSideMenuButtonShowAnimationEndHandler = () => {
         sideMenuButton.addEventListener('animationend', function() {
@@ -106,7 +126,7 @@ function clickSideMenuButton(){
     const addSideMenuCloseAnimationEndHandler = () => {
         sideMenu.addEventListener('animationend', function() {
             sideMenu.classList.remove('close');
-            // mainContainer.classList.remove('close');
+            sideMenu.close();
             sideMenu.removeEventListener('animationend', arguments.callee, false);
     
             sideMenuButton.classList.add('show');
@@ -116,16 +136,14 @@ function clickSideMenuButton(){
 
     if(sideMenu.classList.contains('open')) {
         sideMenu.classList.remove('open');
-        mainContainer.classList.remove('open');
         sideMenuButton.classList.remove('open');
 
         sideMenu.classList.add('close');
-        mainContainer.classList.add('close');
         addSideMenuCloseAnimationEndHandler();
     }
     else{
+        sideMenu.showModal();
         sideMenu.classList.add('open');
         sideMenuButton.classList.add('open');
-        mainContainer.classList.add('open');
     }
 }
