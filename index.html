@@ -12,18 +12,77 @@
     <header>
         <div id="side-menu-container">
             <div id="side-menu-title">
-                <button id="side-menu-button" onclick="clickSideMenuButton()">
-                    <!-- <img id="side-menu-icon" src="img/side_menu_button.svg" /> -->
-                </button>
-                <!-- <input type="checkbox" id="side-menu-checkbox"> -->
+                <button id="side-menu-button" onclick="clickSideMenuButton()"></button>
                 <label>Default  預設</label>
             </div>
             <div id="side-menu-options">
-                <a class="side-menu-option">Style 風格</a>
-                <a class="side-menu-option">Category 分類</a>
-                <a class="side-menu-option">Distance 距離</a>
-                <a class="side-menu-option">Blacklist 黑名單</a>
-                <a class="side-menu-option">Preference list 偏好名單</a>
+                <a class="side-menu-option" onclick="clickDialog('style-modal')">Style 風格
+                    <dialog class="side-menu-modal" id="style-modal">
+                        <div class="dialog-content">
+                            <label class="dialog-title">Style 風格</label>
+                        </div>
+                        <div class="side-menu-options">
+                            <label><input type="checkbox" name="all-style-checkbox" onclick="styleCheckAll()">All 全選</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">Chinese 中式</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">Taiwanese 台式</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">Hong Kong 港式</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">Sichuan 川式</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">Korean 韓式</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">Japanese 日式</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">Western 西式</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">American 美式</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">India 印度</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">Southeast Asia 東南亞</label>
+                            <label><input type="checkbox" name="style-checkbox" onclick="styleOptionClicked()">Others 其他</label>
+                        </div>
+                    </dialog>
+                </a>
+                <a class="side-menu-option" onclick="clickDialog('category-modal')">Category 分類
+                    <dialog class="side-menu-modal" id="category-modal">
+                        <div class="dialog-content">
+                            <label class="dialog-title">Category 分類</label>
+                        </div>
+                        <div class="side-menu-options">
+                            <label><input type="checkbox" name="all-category-checkbox" onclick="categoryCheckAll()">All 全選</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Rice 飯</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Noodle 麵食</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Vegetarian diet 素食</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Fast food 速食</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">BBQ 燒烤</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Self-serve 自助餐</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Street food 小吃</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Stir-fried 熱炒</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Brunch 早午餐</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Cafes 咖啡廳</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Drink 飲料</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Bar 酒吧</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Hot pot 火鍋</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Light meal 簡餐</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Braised dishes 滷味</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Fried food 炸物</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Izakaya 居酒屋</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Bistro 餐酒館</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Teppanyaki 鐵板燒</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Bread, Dessert<br>&emsp;&thinsp;麵包、甜點</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Convenient store<br>&emsp;&thinsp;便利商店</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Others 其他</label>                            
+                        </div>
+                    </dialog>
+                </a>
+                <a class="side-menu-option" onclick="clickDialog('distance-modal')">Distance 距離</a>
+                <dialog class="side-menu-modal" id="distance-modal">
+                    <div class="dialog-content">
+                        <label class="dialog-title">Style 風格</label>
+                    </div>
+                    <div class="side-menu-options">
+                        <label><input type="checkbox">Intramural 校內</label>
+                        <label><input type="checkbox">Dormitory, Guanghua<br>&emsp;&thinsp;宿舍、光華</label>
+                        <label><input type="checkbox">Farther 更遠</label>
+                                
+                    </div>
+                </dialog>
+                <a class="side-menu-option" onclick="clickDialog('blacklist-modal')">Blacklist 黑名單</a>
+                <a class="side-menu-option" onclick="clickDialog('whitelist-modal')">Preference list 偏好名單</a>
             </div>
         </div>
     </header>

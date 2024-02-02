@@ -99,7 +99,7 @@ button {
 }
 
 #side-menu-title>label {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
 }
 
 #side-menu-options {
@@ -109,14 +109,65 @@ button {
     align-items: center;
 }
 
-.side-menu-option{
+.side-menu-option {
     margin: 0.5rem;
+}
+
+.side-menu-option:active {
+    text-decoration: underline;
+}
+.side-menu-modal {
+    background-color: var(--beige);
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    max-width: none;
+    border-color: var(--dark-green);
+}
+
+.side-menu-modal[open] {
+    animation: dialog-slide-up 0.4s ease-out;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-menu-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+    animation: dialog-backdrop-fade-in 0.3s ease-out;
+}
+
+.side-menu-modal.hide {
+    animation: dialog-slide-down 0.5s ease-out;
+}
+
+.side-menu-modal.hide::backdrop {
+    animation: dialog-backdrop-fade-out 0.5s ease-out;
+}
+
+.side-menu-options {
+    display: grid;
+    margin: 1rem;
+    grid-template-columns: repeat(3, 33%);
+}
+
+.side-menu-options label {
+    margin: 0.25rem 0;
+    color: var(--dark-green);
 }
 
 #main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#main-container.open {
+    /* background: rgba(0, 0, 0, 0.3); */
+    /* animation: side-menu-button-show 0.5s ease-out; */
 }
 
 #main-container > h1 {

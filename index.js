@@ -44,21 +44,41 @@ function clickDialog(dialog_id){
 }
 
 function dialogClose(){
-    let dialogs=document.getElementsByClassName("filter-setting-modal");
-    Array.from(dialogs).forEach(dialog => {
-        dialog.addEventListener("click", e => {
-            if (e.target != dialog) return;
-            const dialogDimensions = dialog.getBoundingClientRect()
+    let filter_dialogs=document.getElementsByClassName("filter-setting-modal");
+    Array.from(filter_dialogs).forEach(filter_dialog => {
+        filter_dialog.addEventListener("click", e => {
+            if (e.target != filter_dialog) return;
+            const dialogDimensions = filter_dialog.getBoundingClientRect()
             if (e.clientX < dialogDimensions.left ||
                 e.clientX > dialogDimensions.right ||
                 e.clientY < dialogDimensions.top ||
                 e.clientY > dialogDimensions.bottom) {
                 
-                dialog.classList.add('hide');
-                dialog.addEventListener('animationend', function(){
-                    dialog.classList.remove('hide');
-                    dialog.close();
-                    dialog.removeEventListener('animationend',  arguments.callee, false);
+                    filter_dialog.classList.add('hide');
+                    filter_dialog.addEventListener('animationend', function(){
+                    filter_dialog.classList.remove('hide');
+                    filter_dialog.close();
+                    filter_dialog.removeEventListener('animationend',  arguments.callee, false);
+                }, false);
+            }
+        })
+    });
+
+    let sideMenu_dialogs=document.getElementsByClassName("side-menu-modal");
+    Array.from(sideMenu_dialogs).forEach(sideMenu_dialog => {
+        sideMenu_dialog.addEventListener("click", e => {
+            if (e.target != sideMenu_dialog) return;
+            const dialogDimensions = sideMenu_dialog.getBoundingClientRect()
+            if (e.clientX < dialogDimensions.left ||
+                e.clientX > dialogDimensions.right ||
+                e.clientY < dialogDimensions.top ||
+                e.clientY > dialogDimensions.bottom) {
+                
+                    sideMenu_dialog.classList.add('hide');
+                    sideMenu_dialog.addEventListener('animationend', function(){
+                    sideMenu_dialog.classList.remove('hide');
+                    sideMenu_dialog.close();
+                    sideMenu_dialog.removeEventListener('animationend',  arguments.callee, false);
                 }, false);
             }
         })
@@ -75,10 +95,7 @@ function deleteShop(shop_id) {
 function clickSideMenuButton(){
     let sideMenu = document.getElementById('side-menu-container');
     let sideMenuButton = document.getElementById('side-menu-button');
-    // let sideMenuCheckbox = document.getElementById('side-menu-checkbox');
-
-    // sideMenuCheckbox.checked = !sideMenuCheckbox.checked;
-    // if(sideMenuCheckbox.checked) {
+    let mainContainer = document.getElementById('main-container');
 
     const addSideMenuButtonShowAnimationEndHandler = () => {
         sideMenuButton.addEventListener('animationend', function() {
@@ -89,6 +106,7 @@ function clickSideMenuButton(){
     const addSideMenuCloseAnimationEndHandler = () => {
         sideMenu.addEventListener('animationend', function() {
             sideMenu.classList.remove('close');
+            // mainContainer.classList.remove('close');
             sideMenu.removeEventListener('animationend', arguments.callee, false);
     
             sideMenuButton.classList.add('show');
@@ -98,13 +116,16 @@ function clickSideMenuButton(){
 
     if(sideMenu.classList.contains('open')) {
         sideMenu.classList.remove('open');
+        mainContainer.classList.remove('open');
         sideMenuButton.classList.remove('open');
 
         sideMenu.classList.add('close');
+        mainContainer.classList.add('close');
         addSideMenuCloseAnimationEndHandler();
     }
     else{
         sideMenu.classList.add('open');
         sideMenuButton.classList.add('open');
+        mainContainer.classList.add('open');
     }
 }
