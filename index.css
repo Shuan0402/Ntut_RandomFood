@@ -68,6 +68,7 @@ button {
 
 #side-menu-container::backdrop {
     background-color: rgba(0, 0, 0, 0.3);
+    animation: dialog-backdrop-fade-in 0.3s ease-out;
 }
 
 #side-menu-container.open {
@@ -75,11 +76,15 @@ button {
     animation: side-menu-open 0.5s ease-out;
 }
 
-
 #side-menu-container.close {
     visibility: visible;
     animation: side-menu-close 0.5s ease-out;
 }
+
+#side-menu-container.close::backdrop {
+    animation: dialog-backdrop-fade-out 0.5s ease-out;
+}
+
 
 #side-menu-title {
     display: flex;
