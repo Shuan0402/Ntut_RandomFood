@@ -83,7 +83,93 @@
                     </div>
                 </dialog>
                 <a class="side-menu-option" onclick="clickDialog('blacklist-modal')">Blacklist 黑名單</a>
+                <dialog class="filter-setting-modal" id="blacklist-modal">
+                    <div class="dialog-content">
+                        <label class="dialog-title">Blacklist 黑名單</label>
+                        <button class="hint-button" onclick="clickDialog('blacklist-hint')">
+                            <img src="img/hint_button.svg" />
+                        </button>
+                        <dialog class="filter-setting-modal hint-modal" id="blacklist-hint">
+                            <div class="hint-content">
+                                <label>Blacklist 黑名單</label>
+                                <p>黑名單中的所有店家都會被排除，<br>確保在隨機抽取時不會抽到這些店家。</p>
+                                <p>All the stores in the blacklist will be excluded,ensuring that they will not be drawn when randomly selecting.</p>
+                            </div>
+                        </dialog>
+                    </div>
+                    <div class="dialog-content searching-row">
+                        <div class="searching-box">
+                            <div class="searching-text">
+                                <input type="text" placeholder="請輸入店家名稱">
+                                <button class="searching-button">
+                                    <img src="img/search_button.svg" />
+                                </button>
+                            </div>
+                            <div class="searching-options">
+                                <label>option 1</label>
+                                <label>option 2</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shops-list" id="blacklist-options">
+                        <div class="shop-option" id="blacklist-option-shop1">
+                            <label>shop1</label>
+                            <button onclick="deleteShop('blacklist-option-shop1')">
+                                <img src="img/remove_button.svg" />
+                            </button>
+                        </div>
+                        <div class="shop-option" id="blacklist-option-shop2">
+                            <label>shop2</label>
+                            <button onclick="deleteShop('blacklist-option-shop2')">
+                                <img src="img/remove_button.svg" />
+                            </button>
+                        </div>
+                    </div>
+                </dialog>
                 <a class="side-menu-option" onclick="clickDialog('whitelist-modal')">Preference list 偏好名單</a>
+                <dialog class="filter-setting-modal" id="whitelist-modal">
+                    <div class="dialog-content">
+                        <label class="dialog-title">Preference list 偏好名單</label>
+                        <button class="hint-button" onclick="clickDialog('whitelist-hint')">
+                            <img src="img/hint_button.svg" />
+                        </button>
+                        <dialog class="filter-setting-modal hint-modal" id="whitelist-hint">
+                            <div class="hint-content">
+                                <label class="title">Preferencelist 偏好名單</label>
+                                <p>偏好名單中的所有店家權重都會提升，<br>使其在隨機抽取時被抽中的機率更高。</p>
+                                <p>All the stores in the preferred list will have their weights increased, increasing the probability of being selected during random sampling.</p>
+                            </div>
+                        </dialog>
+                    </div>
+                    <div class="dialog-content searching-row">
+                        <div class="searching-box">
+                            <div class="searching-text">
+                                <input type="text" placeholder="請輸入店家名稱">
+                                <button class="searching-button">
+                                    <img src="img/search_button.svg" />
+                                </button>
+                            </div>
+                            <div class="searching-options">
+                                <label>option 1</label>
+                                <label>option 2</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shops-list" id="whitelist-option">
+                        <div class="shop-option" id="whitelist-option-shop1">
+                            <label>shop1</label>
+                            <button onclick="deleteShop('whitelist-option-shop1')">
+                                <img src="img/remove_button.svg" />
+                            </button>
+                        </div>
+                        <div class="shop-option" id="whitelist-option-shop2">
+                            <label>shop2</label>
+                            <button onclick="deleteShop('whitelist-option-shop2')">
+                                <img src="img/remove_button.svg"/>
+                            </button>
+                        </div>
+                    </div>
+                </dialog>
             </div>
         </dislog>
     </header>

@@ -147,3 +147,5 @@ function clickSideMenuButton(){
         sideMenuButton.classList.add('open');
     }
 }
+
+
