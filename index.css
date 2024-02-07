@@ -180,11 +180,6 @@ button {
     align-items: center;
 }
 
-#main-container.open {
-    /* background: rgba(0, 0, 0, 0.3); */
-    /* animation: side-menu-button-show 0.5s ease-out; */
-}
-
 #main-container > h1 {
     color: var(--dark-green);
     cursor: default;
@@ -394,9 +389,13 @@ button {
     align-items: center;
 }
 
+#random-button-link {
+    text-decoration: none;
+}
+
 #random-button {
-    width: 8rem;
-    height: 4rem;
+    width: 10rem;
+    height: 3rem;
     background-color: var(--light-green); 
     border: none;
     color: white;
@@ -408,7 +407,5 @@ button {
 }
 
 #random-button:active {
-    width: 7.9rem;
-    height: 3.9rem;
     background-color: var(--dark-green);
 }

@@ -1,0 +1,37 @@
+#result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#result-title {
+    display: flex;
+}
+
+#location_pointer_icon {
+    height: 1rem;
+    width: 1rem;
+}
+
+.result-button-container {
+}
+
+.result-button-link {
+    text-decoration: none;
+}
+
+.result-button {
+    width: 10rem;
+    height: 3rem;
+    background-color: var(--light-green); 
+    border: none;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin: 0.3rem;
+}
+
+.result-button:active {
+    background-color: var(--dark-green);
+}
