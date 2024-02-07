@@ -7,8 +7,8 @@
 #result-title {
     display: flex;
     align-items: center;
-    margin: 1rem;
     font-size: large;
+    color: var(--dark-green);
 }
 
 #location_pointer_icon {
@@ -16,8 +16,16 @@
     width: 2rem;
 }
 
+#result-button-container {
+    display: flex;
+}
+
 .result-button-link {
     text-decoration: none;
+    margin: 0.5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
 }
 
 .result-button {
@@ -29,10 +37,10 @@
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    margin: 0.5rem;
+    /* margin: 0.5rem;
     margin-left: 2rem;
     margin-right: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem; */
 }
 
 .result-button:active {
