@@ -11,3 +11,14 @@ function clickToLocationPage(){
 }
 
 clickToLocationPage();
+
+function clickButton(button_id){
+    let button = document.getElementById(button_id);
+
+    if(button.classList.contains('clicked')) {
+        button.classList.remove('clicked');
+    }
+    else {
+        button.classList.add('clicked');
+    }
+}

@@ -62,7 +62,6 @@ button {
     color: var(--white);
     border: none;
     left: 0%;
-    /* position: relative; */
     margin: 0%;
     cursor: default;
 }

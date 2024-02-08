@@ -175,10 +175,17 @@
     </header>
     <main>
         <div id="main-container">
-            <h1>NTUT Random Food</h1>
+            <a class="title" href="./index.html">
+                <h1>NTUT Random Food</h1>
+            </a>
             <div id="result-container">
-                <div id="result-image">
+                <div id="result-shop-container">
                     <img class="link-item" src="shop_img/光華車輪餅.jpg">
+                    <div id="result-shop-button-container">
+                        <button class="result-shop-button" id="like-button" onclick="clickButton('like-button')"></button>
+                        <button class="result-shop-button" id="dislike-button" onclick="clickButton('dislike-button')"></button>
+                        <!-- <button class="result-shop-button">link</button> -->
+                    </div>
                 </div>
                 <div id="result-title">
                     <p class="link-item">光華車輪餅</p>
