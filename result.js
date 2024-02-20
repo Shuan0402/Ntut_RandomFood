@@ -1,4 +1,4 @@
-function clickToLocationPage(){
+function clickToLocationPage() {
     const linkItems = document.querySelectorAll('.link-item');
 
     // 設置點擊事件監聽器
@@ -12,7 +12,7 @@ function clickToLocationPage(){
 
 clickToLocationPage();
 
-function clickButton(button_id){
+function clickButton(button_id) {
     let button = document.getElementById(button_id);
 
     if(button.classList.contains('clicked')) {
@@ -21,4 +21,8 @@ function clickButton(button_id){
     else {
         button.classList.add('clicked');
     }
+}
+
+function clickLinkButton() {
+    navigator.clipboard.writeText("text");
 }
