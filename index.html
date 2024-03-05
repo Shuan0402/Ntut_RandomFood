@@ -63,6 +63,7 @@
                             <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Izakaya 居酒屋</label>
                             <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Bistro 餐酒館</label>
                             <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Teppanyaki 鐵板燒</label>
+                            <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Healthy meal 健康餐</label>
                             <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Bread, Dessert 麵包、甜點</label>
                             <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Convenient store 便利商店</label>
                             <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Others 其他</label>                            
@@ -134,6 +135,7 @@
                                 <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Izakaya 居酒屋</label>
                                 <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Bistro 餐酒館</label>
                                 <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Teppanyaki 鐵板燒</label>
+                                <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Healthy meal 健康餐</label>
                                 <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Bread, Dessert<br>&emsp;&thinsp;麵包、甜點</label>
                                 <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Convenient store<br>&emsp;&thinsp;便利商店</label>
                                 <label><input type="checkbox" name="category-checkbox" onclick="categoryOptionClicked()">Others 其他</label>
@@ -169,14 +171,12 @@
                             <div class="dialog-content searching-row">
                                 <div class="searching-box">
                                     <div class="searching-text">
-                                        <input type="text" placeholder="請輸入店家名稱">
+                                        <input type="text" placeholder="請輸入店家名稱" onfocus="addBlackListShops()" onblur="removeBlackListShops()" oninput="filterOptionShops()">
                                         <button class="searching-button">
                                             <img src="img/search_button.svg" />
                                         </button>
                                     </div>
-                                    <div class="searching-options">
-                                        <label>option 1</label>
-                                        <label>option 2</label>
+                                    <div id="blacklist-searching-options" class="searching-options">
                                     </div>
                                 </div>
                             </div>

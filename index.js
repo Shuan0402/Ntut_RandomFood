@@ -1,3 +1,18 @@
+const shops = [
+    {
+        "name": "光華車輪餅"
+    },
+    {
+        "name": "全家"
+    },
+    {
+        "name": "露易莎咖啡"
+    },
+    {
+        "name": "COMEBUY"
+    }
+]
+
 function styleCheckAll() {
     const selectAllOption = document.getElementsByName("all-style-checkbox")[0];
     const options = document.getElementsByName("style-checkbox");
@@ -148,4 +163,20 @@ function clickSideMenuButton(){
     }
 }
 
+function addBlackListShops() {
+    const blackListOptions = document.getElementById("blacklist-searching-options");
+    blackListOptions.innerHTML = shops.map(shop => `<label>${shop.name}</label>`).join("");
+}
 
+function removeBlackListShops() {
+    const blackListOptions = document.getElementById("blacklist-searching-options");
+    blackListOptions.innerHTML = "";
+}
+
+function filterOptionShops() {
+    let input = document.getElementById("blacklist-modal").getElementsByTagName("input")[0];
+    const blackListOptions = document.getElementById("blacklist-searching-options");
+    blackListOptions.innerHTML = shops.filter(shop => shop.name.toLowerCase().includes(input.value.toLowerCase()))
+                                    .map(shop => `<label>${shop.name}</label>`)
+                                    .join("");
+}
