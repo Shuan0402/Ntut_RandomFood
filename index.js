@@ -163,20 +163,56 @@ function clickSideMenuButton(){
     }
 }
 
+let suggestionsTimeout;
+let blacklistShopList = [];
+
 function addBlackListShops() {
+    clearTimeout(suggestionsTimeout);
     const blackListOptions = document.getElementById("blacklist-searching-options");
-    blackListOptions.innerHTML = shops.map(shop => `<label>${shop.name}</label>`).join("");
+    blackListOptions.innerHTML = shops.filter(shop => !blacklistShopList.includes(shop.name))
+                                    .map(shop => `<label onclick="clickBlacklistOption('${shop.name}')">${shop.name}</label>`)
+                                    .join("");
 }
 
 function removeBlackListShops() {
-    const blackListOptions = document.getElementById("blacklist-searching-options");
-    blackListOptions.innerHTML = "";
+    // const blackListOptions = document.getElementById("blacklist-searching-options");
+    // blackListOptions.innerHTML = "";
+
+    suggestionsTimeout = setTimeout(function() {
+        document.getElementById("blacklist-searching-options").innerHTML = "";
+        console.log("remove");
+    }, 300);
 }
 
 function filterOptionShops() {
     let input = document.getElementById("blacklist-modal").getElementsByTagName("input")[0];
     const blackListOptions = document.getElementById("blacklist-searching-options");
-    blackListOptions.innerHTML = shops.filter(shop => shop.name.toLowerCase().includes(input.value.toLowerCase()))
-                                    .map(shop => `<label>${shop.name}</label>`)
+    blackListOptions.innerHTML = shops.filter(shop => !blacklistShopList.includes(shop.name))
+                                    .filter(shop => shop.name.toLowerCase().includes(input.value.toLowerCase()))
+                                    .map(shop => `<label onclick="clickBlacklistOption(${shop.name})">${shop.name}</label>`)
                                     .join("");
 }
+
+const blacklistShopTemp = document.getElementById("blacklist-shop-template");
+const blacklistShopOptionList = document.getElementById("blacklist-options");
+
+function clickBlacklistOption(shop_name) {
+    console.log("click option");
+
+    blacklistShopList.push(shop_name);
+    let clone = document.importNode(blacklistShopTemp.content, true);
+
+    let shopOption = clone.querySelector(".shop-option");
+    shopOption.id = "blacklist-option-" + shop_name;
+    shopOption.querySelector("label").textContent = shop_name;
+
+    let deleteButton = clone.querySelector("button");
+    deleteButton.addEventListener("click", function() {
+        let toDeleteShop = document.getElementById(shopOption.id);
+        blacklistShopOptionList.removeChild(toDeleteShop);
+        blacklistShopList = blacklistShopList.filter(shop => shop != shop_name);
+    });
+
+    blacklistShopOptionList.appendChild(clone);
+}
+
