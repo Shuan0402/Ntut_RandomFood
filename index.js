@@ -166,28 +166,25 @@ function clickSideMenuButton(){
 let suggestionsTimeout;
 let blacklistShopList = [];
 
-function addBlackListShops() {
+function addBlacklistShops() {
     clearTimeout(suggestionsTimeout);
-    const blackListOptions = document.getElementById("blacklist-searching-options");
-    blackListOptions.innerHTML = shops.filter(shop => !blacklistShopList.includes(shop.name))
+    const blacklistOptions = document.getElementById("blacklist-searching-options");
+    blacklistOptions.innerHTML = shops.filter(shop => !blacklistShopList.includes(shop.name))
                                     .map(shop => `<label onclick="clickBlacklistOption('${shop.name}')">${shop.name}</label>`)
                                     .join("");
 }
 
-function removeBlackListShops() {
-    // const blackListOptions = document.getElementById("blacklist-searching-options");
-    // blackListOptions.innerHTML = "";
-
+function removeBlacklistShops() {
     suggestionsTimeout = setTimeout(function() {
         document.getElementById("blacklist-searching-options").innerHTML = "";
         console.log("remove");
     }, 300);
 }
 
-function filterOptionShops() {
+function filterBlacklistOptionShops() {
     let input = document.getElementById("blacklist-modal").getElementsByTagName("input")[0];
-    const blackListOptions = document.getElementById("blacklist-searching-options");
-    blackListOptions.innerHTML = shops.filter(shop => !blacklistShopList.includes(shop.name))
+    const blacklistOptions = document.getElementById("blacklist-searching-options");
+    blacklistOptions.innerHTML = shops.filter(shop => !blacklistShopList.includes(shop.name))
                                     .filter(shop => shop.name.toLowerCase().includes(input.value.toLowerCase()))
                                     .map(shop => `<label onclick="clickBlacklistOption(${shop.name})">${shop.name}</label>`)
                                     .join("");
@@ -216,3 +213,51 @@ function clickBlacklistOption(shop_name) {
     blacklistShopOptionList.appendChild(clone);
 }
 
+let whitelistShopList = [];
+
+function addWhitelistShops() {
+    clearTimeout(suggestionsTimeout);
+    const whitelistOptions = document.getElementById("whitelist-searching-options");
+    whitelistOptions.innerHTML = shops.filter(shop => !whitelistShopList.includes(shop.name))
+                                    .map(shop => `<label onclick="clickWhitelistOption('${shop.name}')">${shop.name}</label>`)
+                                    .join("");
+}
+
+function removeWhitelistShops() {
+    suggestionsTimeout = setTimeout(function() {
+        document.getElementById("whitelist-searching-options").innerHTML = "";
+        console.log("remove");
+    }, 300);
+}
+
+function filterWhitelistOptionShops() {
+    let input = document.getElementById("whitelist-modal").getElementsByTagName("input")[0];
+    const whitelistOptions = document.getElementById("whitelist-searching-options");
+    whitelistOptions.innerHTML = shops.filter(shop => !whitelistShopList.includes(shop.name))
+                                    .filter(shop => shop.name.toLowerCase().includes(input.value.toLowerCase()))
+                                    .map(shop => `<label onclick="clickWhitelistOption(${shop.name})">${shop.name}</label>`)
+                                    .join("");
+}
+
+const whitelistShopTemp = document.getElementById("whitelist-shop-template");
+const whitelistShopOptionList = document.getElementById("whitelist-options");
+
+function clickWhitelistOption(shop_name) {
+    console.log("click option");
+
+    whitelistShopList.push(shop_name);
+    let clone = document.importNode(whitelistShopTemp.content, true);
+
+    let shopOption = clone.querySelector(".shop-option");
+    shopOption.id = "whitelist-option-" + shop_name;
+    shopOption.querySelector("label").textContent = shop_name;
+
+    let deleteButton = clone.querySelector("button");
+    deleteButton.addEventListener("click", function() {
+        let toDeleteShop = document.getElementById(shopOption.id);
+        whitelistShopOptionList.removeChild(toDeleteShop);
+        whitelistShopList = whitelistShopList.filter(shop => shop != shop_name);
+    });
+
+    whitelistShopOptionList.appendChild(clone);
+}

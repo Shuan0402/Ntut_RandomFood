@@ -171,7 +171,7 @@
                             <div class="dialog-content searching-row">
                                 <div class="searching-box">
                                     <div class="searching-text">
-                                        <input type="text" placeholder="請輸入店家名稱" onfocus="addBlackListShops()" onblur="removeBlackListShops()" oninput="filterOptionShops()">
+                                        <input type="text" placeholder="請輸入店家名稱" onfocus="addBlacklistShops()" onblur="removeBlacklistShops()" oninput="filterBlacklistOptionShops()">
                                         <button class="searching-button">
                                             <img src="img/search_button.svg" />
                                         </button>
@@ -182,7 +182,7 @@
                             </div>
                             <div class="shops-list" id="blacklist-options">
                                 <template id="blacklist-shop-template">
-                                    <div class="shop-option" id="blacklist-option-shop1">
+                                    <div class="shop-option">
                                         <label>shop1</label>
                                         <button>
                                             <img src="img/remove_button.svg" />
@@ -211,30 +211,24 @@
                             <div class="dialog-content searching-row">
                                 <div class="searching-box">
                                     <div class="searching-text">
-                                        <input type="text" placeholder="請輸入店家名稱">
+                                        <input type="text" placeholder="請輸入店家名稱" onfocus="addWhitelistShops()" onblur="removeWhitelistShops()" oninput="filterWhitelistOptionShops()">
                                         <button class="searching-button">
                                             <img src="img/search_button.svg" />
                                         </button>
                                     </div>
-                                    <div class="searching-options">
-                                        <label>option 1</label>
-                                        <label>option 2</label>
+                                    <div id="whitelist-searching-options" class="searching-options">
                                     </div>
                                 </div>
                             </div>
-                            <div class="shops-list" id="whitelist-option">
-                                <div class="shop-option" id="whitelist-option-shop1">
-                                    <label>shop1</label>
-                                    <button onclick="deleteShop('whitelist-option-shop1')">
-                                        <img src="img/remove_button.svg" />
-                                    </button>
-                                </div>
-                                <div class="shop-option" id="whitelist-option-shop2">
-                                    <label>shop2</label>
-                                    <button onclick="deleteShop('whitelist-option-shop2')">
-                                        <img src="img/remove_button.svg"/>
-                                    </button>
-                                </div>
+                            <div class="shops-list" id="whitelist-options">
+                                <template id="whitelist-shop-template">
+                                    <div class="shop-option">
+                                        <label>shop1</label>
+                                        <button>
+                                            <img src="img/remove_button.svg" />
+                                        </button>
+                                    </div>
+                                </template>
                             </div>
                         </dialog>
                     </div>
