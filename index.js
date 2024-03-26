@@ -53,9 +53,103 @@ function categoryOptionClicked() {
     selectAllOption.checked = allChecked;
 }
 
-function clickDialog(dialog_id){
+let dialogTag;
+let suggestionsTimeout;
+let blacklistShopList = [];
+let defaultBlacklistShopList = [];
+let whitelistShopList = [];
+let defaultWhitelistShopList = [];
+
+const blacklistShopTemp = document.getElementById("blacklist-shop-template");
+const blacklistShopOptionList = document.getElementById("blacklist-options");
+const whitelistShopTemp = document.getElementById("whitelist-shop-template");
+const whitelistShopOptionList = document.getElementById("whitelist-options");
+
+function getShopBlackList() {
+    if(dialogTag == 'Default') {
+        return defaultBlacklistShopList;
+    }
+    else {
+        return blacklistShopList;
+    }
+}
+
+function addBlacklistOption(shop_name) {
+    let clone = document.importNode(blacklistShopTemp.content, true);
+
+    let shopOption = clone.querySelector(".shop-option");
+    shopOption.id = "blacklist-option-" + shop_name;
+    shopOption.querySelector("label").textContent = shop_name;
+
+    let deleteButton = clone.querySelector("button");
+    deleteButton.addEventListener("click", function() {
+        let toDeleteShop = document.getElementById(shopOption.id);
+        blacklistShopOptionList.removeChild(toDeleteShop);
+        getShopBlackList() = getShopBlackList().filter(shop => shop != shop_name);
+    });
+
+    blacklistShopOptionList.appendChild(clone);
+}
+
+function getShopWhiteList() {
+    if(dialogTag == 'Default') {
+        return defaultWhitelistShopList;
+    }
+    else {
+        return whitelistShopList;
+    }
+}
+
+function addWhitelistOption(shop_name) {
+    let clone = document.importNode(whitelistShopTemp.content, true);
+
+    let shopOption = clone.querySelector(".shop-option");
+    shopOption.id = "whitelist-option-" + shop_name;
+    shopOption.querySelector("label").textContent = shop_name;
+
+    let deleteButton = clone.querySelector("button");
+    deleteButton.addEventListener("click", function() {
+        let toDeleteShop = document.getElementById(shopOption.id);
+        whitelistShopOptionList.removeChild(toDeleteShop);
+        whitelistShopList = whitelistShopList.filter(shop => shop != shop_name);
+    });
+
+    whitelistShopOptionList.appendChild(clone);
+}
+
+
+function clickDialog(dialog_id, tag){
     let modal=document.getElementById(dialog_id);
+    dialogTag = tag;
+
     modal.showModal();
+
+    if(dialog_id == 'blacklist-modal') {
+        blacklistShopOptionList.innerHTML = `<template id="blacklist-shop-template">
+                                                    <div class="shop-option">
+                                                        <label>shop1</label>
+                                                        <button>
+                                                            <img src="img/remove_button.svg" />
+                                                        </button>
+                                                    </div>
+                                                </template>`;
+        for (shop of getShopBlackList()) {
+            addBlacklistOption(shop);
+        }
+    }
+    else {
+        whitelistShopOptionList.innerHTML = `<template id="whitelist-shop-template">
+                                                    <div class="shop-option">
+                                                        <label>shop1</label>
+                                                        <button>
+                                                            <img src="img/remove_button.svg" />
+                                                        </button>
+                                                    </div>
+                                                </template>`;
+        for (shop of getShopWhiteList()) {
+            addWhitelistOption(shop);
+        }
+    }
 }
 
 function dialogClose(){
@@ -163,62 +257,41 @@ function clickSideMenuButton(){
     }
 }
 
-let suggestionsTimeout;
-let blacklistShopList = [];
+
+function toDialogOptions(shops) {
+    return shops
+        .map(shop => `<label onclick="clickBlacklistOption('${shop.name}')">${shop.name}</label>`)
+        .join("");
+}
 
 function addBlacklistShops() {
     clearTimeout(suggestionsTimeout);
     const blacklistOptions = document.getElementById("blacklist-searching-options");
-    blacklistOptions.innerHTML = shops.filter(shop => !blacklistShopList.includes(shop.name))
-                                    .map(shop => `<label onclick="clickBlacklistOption('${shop.name}')">${shop.name}</label>`)
-                                    .join("");
+    blacklistOptions.innerHTML = toDialogOptions(shops.filter(shop => !getShopBlackList().includes(shop.name)));
 }
 
 function removeBlacklistShops() {
     suggestionsTimeout = setTimeout(function() {
         document.getElementById("blacklist-searching-options").innerHTML = "";
-        console.log("remove");
     }, 300);
 }
 
 function filterBlacklistOptionShops() {
     let input = document.getElementById("blacklist-modal").getElementsByTagName("input")[0];
     const blacklistOptions = document.getElementById("blacklist-searching-options");
-    blacklistOptions.innerHTML = shops.filter(shop => !blacklistShopList.includes(shop.name))
-                                    .filter(shop => shop.name.toLowerCase().includes(input.value.toLowerCase()))
-                                    .map(shop => `<label onclick="clickBlacklistOption(${shop.name})">${shop.name}</label>`)
-                                    .join("");
+    blacklistOptions.innerHTML = toDialogOptions(shops.filter(shop => !getShopBlackList().includes(shop.name))
+                                                    .filter(shop => shop.name.toLowerCase().includes(input.value.toLowerCase())));
 }
-
-const blacklistShopTemp = document.getElementById("blacklist-shop-template");
-const blacklistShopOptionList = document.getElementById("blacklist-options");
 
 function clickBlacklistOption(shop_name) {
-    console.log("click option");
-
-    blacklistShopList.push(shop_name);
-    let clone = document.importNode(blacklistShopTemp.content, true);
-
-    let shopOption = clone.querySelector(".shop-option");
-    shopOption.id = "blacklist-option-" + shop_name;
-    shopOption.querySelector("label").textContent = shop_name;
-
-    let deleteButton = clone.querySelector("button");
-    deleteButton.addEventListener("click", function() {
-        let toDeleteShop = document.getElementById(shopOption.id);
-        blacklistShopOptionList.removeChild(toDeleteShop);
-        blacklistShopList = blacklistShopList.filter(shop => shop != shop_name);
-    });
-
-    blacklistShopOptionList.appendChild(clone);
+    getShopBlackList().push(shop_name);
+    addBlacklistOption(shop_name);
 }
-
-let whitelistShopList = [];
 
 function addWhitelistShops() {
     clearTimeout(suggestionsTimeout);
     const whitelistOptions = document.getElementById("whitelist-searching-options");
-    whitelistOptions.innerHTML = shops.filter(shop => !whitelistShopList.includes(shop.name))
+    whitelistOptions.innerHTML = shops.filter(shop => !getShopWhiteList().includes(shop.name))
                                     .map(shop => `<label onclick="clickWhitelistOption('${shop.name}')">${shop.name}</label>`)
                                     .join("");
 }
@@ -233,31 +306,13 @@ function removeWhitelistShops() {
 function filterWhitelistOptionShops() {
     let input = document.getElementById("whitelist-modal").getElementsByTagName("input")[0];
     const whitelistOptions = document.getElementById("whitelist-searching-options");
-    whitelistOptions.innerHTML = shops.filter(shop => !whitelistShopList.includes(shop.name))
+    whitelistOptions.innerHTML = shops.filter(shop => !getShopWhiteList().includes(shop.name))
                                     .filter(shop => shop.name.toLowerCase().includes(input.value.toLowerCase()))
                                     .map(shop => `<label onclick="clickWhitelistOption(${shop.name})">${shop.name}</label>`)
                                     .join("");
 }
 
-const whitelistShopTemp = document.getElementById("whitelist-shop-template");
-const whitelistShopOptionList = document.getElementById("whitelist-options");
-
 function clickWhitelistOption(shop_name) {
-    console.log("click option");
-
-    whitelistShopList.push(shop_name);
-    let clone = document.importNode(whitelistShopTemp.content, true);
-
-    let shopOption = clone.querySelector(".shop-option");
-    shopOption.id = "whitelist-option-" + shop_name;
-    shopOption.querySelector("label").textContent = shop_name;
-
-    let deleteButton = clone.querySelector("button");
-    deleteButton.addEventListener("click", function() {
-        let toDeleteShop = document.getElementById(shopOption.id);
-        whitelistShopOptionList.removeChild(toDeleteShop);
-        whitelistShopList = whitelistShopList.filter(shop => shop != shop_name);
-    });
-
-    whitelistShopOptionList.appendChild(clone);
+    getShopWhiteList().push(shop_name);
+    addWhitelistOption(shop_name)
 }

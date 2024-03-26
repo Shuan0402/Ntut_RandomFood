@@ -82,8 +82,8 @@
                                 
                     </div>
                 </dialog>
-                <a class="side-menu-option" onclick="clickDialog('blacklist-modal')">Blacklist 黑名單</a>
-                <a class="side-menu-option" onclick="clickDialog('whitelist-modal')">Preference list 偏好名單</a>
+                <a class="side-menu-option" onclick="clickDialog('blacklist-modal', 'Default')">Blacklist 黑名單</a>
+                <a class="side-menu-option" onclick="clickDialog('whitelist-modal', 'Default')">Preference list 偏好名單</a>
             </div>
         </dislog>
     </header>
@@ -153,11 +153,11 @@
                         </details>
                     </div>
                     <div class="shop-list" id="blacklist">
-                        <label class="filter-setting-title" onclick="clickDialog('blacklist-modal')">Blacklist 黑名單</label>
+                        <label class="filter-setting-title" onclick="clickDialog('blacklist-modal', '')">Blacklist 黑名單</label>
                         <dialog class="filter-setting-modal" id="blacklist-modal">
                             <div class="dialog-content">
                                 <label class="dialog-title">Blacklist 黑名單</label>
-                                <button class="hint-button" onclick="clickDialog('blacklist-hint')">
+                                <button class="hint-button" onclick="clickDialog('blacklist-hint', '')">
                                     <img src="img/hint_button.svg" />
                                 </button>
                                 <dialog class="filter-setting-modal hint-modal" id="blacklist-hint">
@@ -193,11 +193,11 @@
                         </dialog>
                     </div>
                     <div class="shop-list" id="whitelist">
-                        <label class="filter-setting-title" onclick="clickDialog('whitelist-modal')">Preference list 偏好名單</label>
+                        <label class="filter-setting-title" onclick="clickDialog('whitelist-modal', '')">Preference list 偏好名單</label>
                         <dialog class="filter-setting-modal" id="whitelist-modal">
                             <div class="dialog-content">
                                 <label class="dialog-title">Preference list 偏好名單</label>
-                                <button class="hint-button" onclick="clickDialog('whitelist-hint')">
+                                <button class="hint-button" onclick="clickDialog('whitelist-hint', '')">
                                     <img src="img/hint_button.svg" />
                                 </button>
                                 <dialog class="filter-setting-modal hint-modal" id="whitelist-hint">
