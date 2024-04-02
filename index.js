@@ -352,3 +352,15 @@ function useWhitelistDefault() {
         addWhitelistOption(shop);
     }
 }
+
+function generateResult() {
+    let defaultBlacklist = JSON.stringify(defaultBlacklistShopList);
+    localStorage.setItem("defaultBlacklist", defaultBlacklist);
+    let defaultWhitelist = JSON.stringify(defaultWhitelistShopList);
+    localStorage.setItem("defaultWhitelist", defaultWhitelist);
+
+    let blacklist = JSON.stringify(blacklistShopList);
+    sessionStorage.setItem("blacklist", blacklist);
+    let whitelist = JSON.stringify(whitelistShopList);
+    sessionStorage.setItem("whitelist", whitelist);
+}
