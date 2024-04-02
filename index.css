@@ -390,6 +390,25 @@ button {
     flex-grow: 1;
 }
 
+.use-default {
+    margin-top: auto;
+}
+
+.use-default-button {
+    width: 10rem;
+    background-color: var(--dark-green); 
+    border: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.use-default-button:active {
+    background-color: var(--light-green); 
+}
+
 #random-button-container {
     display: flex;
     flex-direction: column;

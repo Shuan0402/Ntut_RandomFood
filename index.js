@@ -85,7 +85,10 @@ function addBlacklistOption(shop_name) {
     deleteButton.addEventListener("click", function() {
         let toDeleteShop = document.getElementById(shopOption.id);
         blacklistShopOptionList.removeChild(toDeleteShop);
-        getShopBlackList() = getShopBlackList().filter(shop => shop != shop_name);
+        if (dialogTag == "Default")
+            defaultBlacklistShopList = getShopBlackList().filter(shop => shop != shop_name);
+        else
+            blacklistShopList = getShopBlackList().filter(shop => shop != shop_name);
     });
 
     blacklistShopOptionList.appendChild(clone);
@@ -111,7 +114,10 @@ function addWhitelistOption(shop_name) {
     deleteButton.addEventListener("click", function() {
         let toDeleteShop = document.getElementById(shopOption.id);
         whitelistShopOptionList.removeChild(toDeleteShop);
-        whitelistShopList = whitelistShopList.filter(shop => shop != shop_name);
+        if (dialogTag == "Default")
+            defaultWhitelistShopList = getShopWhiteList().filter(shop => shop != shop_name);
+        else
+            whitelistShopList = getShopWhiteList().filter(shop => shop != shop_name);
     });
 
     whitelistShopOptionList.appendChild(clone);
@@ -315,4 +321,34 @@ function filterWhitelistOptionShops() {
 function clickWhitelistOption(shop_name) {
     getShopWhiteList().push(shop_name);
     addWhitelistOption(shop_name)
+}
+
+function useBlacklistDefault() {
+    blacklistShopList = [...defaultBlacklistShopList];
+    blacklistShopOptionList.innerHTML = `<template id="blacklist-shop-template">
+                                                    <div class="shop-option">
+                                                        <label>shop1</label>
+                                                        <button>
+                                                            <img src="img/remove_button.svg" />
+                                                        </button>
+                                                    </div>
+                                                </template>`;
+    for (shop of getShopBlackList()) {
+        addBlacklistOption(shop);
+    }
+}
+
+function useWhitelistDefault() {
+    whitelistShopList = [...defaultWhitelistShopList];
+    whitelistShopOptionList.innerHTML = `<template id="whitelist-shop-template">
+                                                    <div class="shop-option">
+                                                        <label>shop1</label>
+                                                        <button>
+                                                            <img src="img/remove_button.svg" />
+                                                        </button>
+                                                    </div>
+                                                </template>`;
+    for (shop of getShopWhiteList()) {
+        addWhitelistOption(shop);
+    }
 }
