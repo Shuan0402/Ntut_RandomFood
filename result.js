@@ -45,7 +45,5 @@ defaultBlacklistShopList = JSON.parse(defaultBlacklist);
 let defaultWhitelist = localStorage.getItem("defaultWhitelist");
 defaultWhitelistShopList = JSON.parse(defaultWhitelist);
 
-let blacklist = sessionStorage.getItem("blacklist");
-blacklistShopList = JSON.parse(blacklist);
-let whitelist = sessionStorage.getItem("whitelist");
-whitelistShopList = JSON.parse(whitelist);
+let resultShopIndexList = sessionStorage.getItem("resultShopIndexList");
+let resultShopList = JSON.parse(resultShopIndexList);

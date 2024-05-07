@@ -1,15 +1,45 @@
 const shops = [
     {
-        "name": "光華車輪餅"
+        "name": "光華車輪餅",
+        "style": ["Taiwanese"],
+        "category": ["Bread, Dessert"],
+        "distance": "Dormitory, Guanghua"
     },
     {
-        "name": "全家"
+        "name": "全家 1",
+        "style": ["Others"],
+        "category": ["Convenient store"],
+        "distance": "Intramural"
     },
     {
-        "name": "露易莎咖啡"
+        "name": "全家 2",
+        "style": ["Others"],
+        "category": ["Convenient store"],
+        "distance": "Dormitory, Guanghua"
     },
     {
-        "name": "COMEBUY"
+        "name": "全家 3",
+        "style": ["Others"],
+        "category": ["Convenient store"],
+        "distance": "Farther"
+    },
+    {
+        "name": "露易莎咖啡",
+        "style": ["Others"],
+        "category": ["Cafes", "Bread, Dessert"],
+        "distance": "Intramural"
+    },
+    {
+        "name": "露易莎咖啡",
+        "style": ["Others"],
+        "category": ["Cafes", "Bread, Dessert"],
+        "distance": "Farther"
+    },
+    {
+        "name": "COMEBUY",
+        "style": ["Others"],
+        "category": ["Drink"],
+        "distance": "Intramural"
     }
 ]
 
@@ -353,14 +383,51 @@ function useWhitelistDefault() {
     }
 }
 
+let resultShopList = [];
+
 function generateResult() {
     let defaultBlacklist = JSON.stringify(defaultBlacklistShopList);
     localStorage.setItem("defaultBlacklist", defaultBlacklist);
     let defaultWhitelist = JSON.stringify(defaultWhitelistShopList);
     localStorage.setItem("defaultWhitelist", defaultWhitelist);
 
-    let blacklist = JSON.stringify(blacklistShopList);
-    sessionStorage.setItem("blacklist", blacklist);
-    let whitelist = JSON.stringify(whitelistShopList);
-    sessionStorage.setItem("whitelist", whitelist);
+    // let blacklist = JSON.stringify(blacklistShopList);
+    // sessionStorage.setItem("blacklist", blacklist);
+    // let whitelist = JSON.stringify(whitelistShopList);
+    // sessionStorage.setItem("whitelist", whitelist);
+
+    for (let i = 0; i < shops.length(); i++) {
+        resultShopList.add(i);
+    }
+    for (shop of whitelistShopList) {
+        resultShopList = resultShopList.concat(getShopIndex(shop["name"]));
+    }
+    const styleList = document.getElementsByName("style-checkbox")
+                                .filter(style => style.checked)
+                                .map(style => style.value);
+    const categoryList = document.getElementsByName("category-checkbox")
+                                    .filter(category => category.checked)
+                                    .map(category => category.value);
+    const distanceList = document.getElementsByName("distance-checkbox")
+                                    .filter(distance => distance.checked)
+                                    .map(distance => distance.value);
+    resultShopList = resultShopList.filter(index => shops[index]["style"].some(style => styleList.includes(style)))
+                                    .filter(index => shops[index]["category"].some(category => categoryList.includes(category)))
+                                    .filter(index => shops[index]["distance"].some(distance => distanceList.includes(distance)))
+                                    .filter(index => !blacklistShopList.includes(shops[index]["name"]));
+
+    let resultShopIndexList = JSON.stringify(resultShopList);
+    sessionStorage.setItem("resultShopIndexList", resultShopIndexList);
+    
+}
+
+function getShopIndex(name) {
+    let indexList = [];
+    for (let i = 0; i < shops.length(); i++) {
+        if (shops[i]["name"] == name) {
+            indexList.add(i);
+        }
+    }
+
+    return indexList;
 }
