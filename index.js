@@ -1,48 +1,3 @@
-const shops = [
-    {
-        "name": "光華車輪餅",
-        "style": ["Taiwanese"],
-        "category": ["Bread, Dessert"],
-        "distance": "Dormitory, Guanghua"
-    },
-    {
-        "name": "全家 1",
-        "style": ["Others"],
-        "category": ["Convenient store"],
-        "distance": "Intramural"
-    },
-    {
-        "name": "全家 2",
-        "style": ["Others"],
-        "category": ["Convenient store"],
-        "distance": "Dormitory, Guanghua"
-    },
-    {
-        "name": "全家 3",
-        "style": ["Others"],
-        "category": ["Convenient store"],
-        "distance": "Farther"
-    },
-    {
-        "name": "露易莎咖啡",
-        "style": ["Others"],
-        "category": ["Cafes", "Bread, Dessert"],
-        "distance": "Intramural"
-    },
-    {
-        "name": "露易莎咖啡",
-        "style": ["Others"],
-        "category": ["Cafes", "Bread, Dessert"],
-        "distance": "Farther"
-    },
-    {
-        "name": "COMEBUY",
-        "style": ["Others"],
-        "category": ["Drink"],
-        "distance": "Intramural"
-    }
-]
-
 function styleCheckAll() {
     const selectAllOption = document.getElementsByName("all-style-checkbox")[0];
     const options = document.getElementsByName("style-checkbox");
@@ -396,29 +351,28 @@ function generateResult() {
     // let whitelist = JSON.stringify(whitelistShopList);
     // sessionStorage.setItem("whitelist", whitelist);
 
-    for (let i = 0; i < shops.length(); i++) {
-        resultShopList.add(i);
+    for (let i = 0; i < shops.length; i++) {
+        resultShopList.push(i);
     }
     for (shop of whitelistShopList) {
         resultShopList = resultShopList.concat(getShopIndex(shop["name"]));
     }
-    const styleList = document.getElementsByName("style-checkbox")
+    const styleList = Array.from(document.getElementsByName("style-checkbox"))
                                 .filter(style => style.checked)
                                 .map(style => style.value);
-    const categoryList = document.getElementsByName("category-checkbox")
+    const categoryList = Array.from(document.getElementsByName("category-checkbox"))
                                     .filter(category => category.checked)
                                     .map(category => category.value);
-    const distanceList = document.getElementsByName("distance-checkbox")
+    const distanceList = Array.from(document.getElementsByName("distance-checkbox"))
                                     .filter(distance => distance.checked)
                                     .map(distance => distance.value);
     resultShopList = resultShopList.filter(index => shops[index]["style"].some(style => styleList.includes(style)))
                                     .filter(index => shops[index]["category"].some(category => categoryList.includes(category)))
-                                    .filter(index => shops[index]["distance"].some(distance => distanceList.includes(distance)))
+                                    .filter(index => distanceList.includes(shops[index]["distance"]))
                                     .filter(index => !blacklistShopList.includes(shops[index]["name"]));
 
     let resultShopIndexList = JSON.stringify(resultShopList);
     sessionStorage.setItem("resultShopIndexList", resultShopIndexList);
-    
 }
 
 function getShopIndex(name) {

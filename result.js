@@ -1,18 +1,3 @@
-const shops = [
-    {
-        "name": "光華車輪餅"
-    },
-    {
-        "name": "全家"
-    },
-    {
-        "name": "露易莎咖啡"
-    },
-    {
-        "name": "COMEBUY"
-    }
-]
-
 function clickToLocationPage() {
     const linkItems = document.querySelectorAll('.link-item');
 
@@ -47,3 +32,14 @@ defaultWhitelistShopList = JSON.parse(defaultWhitelist);
 
 let resultShopIndexList = sessionStorage.getItem("resultShopIndexList");
 let resultShopList = JSON.parse(resultShopIndexList);
+
+console.log(resultShopIndexList);
+
+let result = ""
+function randomResult() {
+    let rand = Math.floor(Math.random() * resultShopList.length);
+    result = resultShopList[rand];
+    console.log(result);
+}
+
+randomResult();
