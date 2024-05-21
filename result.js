@@ -35,11 +35,11 @@ let resultShopList = JSON.parse(resultShopIndexList);
 
 console.log(resultShopIndexList);
 
-let result = ""
 function randomResult() {
     let rand = Math.floor(Math.random() * resultShopList.length);
-    result = resultShopList[rand];
-    console.log(result);
+    let result = resultShopList[rand];
+    let shop_name = document.getElementById("result-shop-name");
+    shop_name.innerHTML = shops[result].name;
 }
 
 randomResult();

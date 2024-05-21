@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ntut Random Food</title>
     <link rel="icon" href="" type="image/x-icon"/>
-    <link rel="stylesheet" href="/animation.css" type="text/css">
-    <link rel="stylesheet" href="/index.css" type="text/css">
-    <link rel="stylesheet" href="/result.css" type="text/css">
+    <link rel="stylesheet" href="./animation.css" type="text/css">
+    <link rel="stylesheet" href="./index.css" type="text/css">
+    <link rel="stylesheet" href="./result.css" type="text/css">
 </head>
 <body>
     <header>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div id="result-title">
-                    <p class="link-item">光華車輪餅</p>
+                    <p class="link-item" id="result-shop-name">光華車輪餅</p>
                     <img class="link-item" id="location_pointer_icon" src="img/location_pointer_icon.svg">
                 </div>
             </div>
@@ -125,8 +125,8 @@
                 <a class="result-button-link" href="index.html">
                     <button class="result-button">SETTING</button>
                 </a>
-                <a class="result-button-link" href="result.html">
-                    <button class="result-button">AGAIN</button>          
+                <a class="result-button-link">
+                    <button class="result-button" onclick="randomResult()">AGAIN</button>          
                 </a>
             </div>
         </div>
